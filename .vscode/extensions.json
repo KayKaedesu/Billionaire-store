@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "vue.volar",
+    "vue.vscode-typescript-vue-plugin",
+    "antfu.iconify",
+    "github.copilot",
+    "github.copilot-chat",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode"
+  ]
+}
