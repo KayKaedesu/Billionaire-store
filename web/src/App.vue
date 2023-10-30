@@ -1,4 +1,8 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from 'vue'
+
+const val = ref()
+</script>
 
 <template>
   <n-config-provider>

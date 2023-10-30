@@ -15,6 +15,7 @@
     "chart.js": "^4.4.0",
     "naive-ui": "^2.35.0",
     "pinia": "^2.1.7",
+    "swagger-axios-codegen": "^0.15.12",
     "vue": "^3.3.4",
     "vue-chartjs": "^5.2.0",
     "vue-router": "^4.2.5"
