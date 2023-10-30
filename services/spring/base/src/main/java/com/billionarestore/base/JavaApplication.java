@@ -1,4 +1,4 @@
-package com.billionarestore.java;
+package com.billionarestore.base;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
