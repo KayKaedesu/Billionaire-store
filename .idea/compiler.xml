@@ -8,16 +8,18 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="DiscoveryServer" />
-        <module name="PaymentService" />
         <module name="ProductService" />
+        <module name="InventoryService" />
+        <module name="PaymentService" />
+        <module name="ApiGateWay" />
         <module name="base" />
         <module name="Core" />
-        <module name="InventoryService" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="ApiGateWay" options="-parameters" />
       <module name="Core" options="-parameters" />
       <module name="DiscoveryServer" options="-parameters" />
       <module name="InventoryService" options="-parameters" />

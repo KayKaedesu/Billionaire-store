@@ -15,6 +15,7 @@
         <option value="$PROJECT_DIR$/services/spring/ProductService/pom.xml" />
         <option value="$PROJECT_DIR$/services/spring/InventoryService/pom.xml" />
         <option value="$PROJECT_DIR$/services/spring/DiscoveryServer/pom.xml" />
+        <option value="$PROJECT_DIR$/services/spring/ApiGateWay/pom.xml" />
       </list>
     </option>
   </component>
