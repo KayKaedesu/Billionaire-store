@@ -2,20 +2,27 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="DiscoveryServer" />
         <module name="PaymentService" />
+        <module name="ProductService" />
         <module name="base" />
         <module name="Core" />
+        <module name="InventoryService" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Core" options="-parameters" />
+      <module name="DiscoveryServer" options="-parameters" />
+      <module name="InventoryService" options="-parameters" />
       <module name="PaymentService" options="-parameters" />
+      <module name="ProductService" options="-parameters" />
       <module name="base" options="-parameters" />
     </option>
   </component>
