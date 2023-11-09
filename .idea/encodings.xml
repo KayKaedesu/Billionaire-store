@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/UserService/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/services/spring/ApiGateWay/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/services/spring/ApiGateWay/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/services/spring/Core/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/services/spring/Core/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/services/spring/DiscoveryServer/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/services/spring/DiscoveryServer/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/services/spring/InventoryService/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/services/spring/InventoryService/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/services/spring/PaymentService/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/services/spring/PaymentService/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/services/spring/ProductService/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/services/spring/ProductService/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/services/spring/UserService/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/services/spring/base/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/services/spring/base/src/main/resources" charset="UTF-8" />
   </component>

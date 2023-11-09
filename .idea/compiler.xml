@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="DiscoveryServer" />
+        <module name="UserService" />
         <module name="ProductService" />
         <module name="InventoryService" />
         <module name="PaymentService" />
@@ -25,6 +26,7 @@
       <module name="InventoryService" options="-parameters" />
       <module name="PaymentService" options="-parameters" />
       <module name="ProductService" options="-parameters" />
+      <module name="UserService" options="-parameters" />
       <module name="base" options="-parameters" />
     </option>
   </component>
