@@ -4,7 +4,7 @@ import com.billionairestore.userservice.command.UserRole;
 import lombok.Data;
 
 @Data
-public class UserCreatedEvent {
+public class UserDeletedEvent {
     private String aggregateId;
     private String userId;
     private String name;

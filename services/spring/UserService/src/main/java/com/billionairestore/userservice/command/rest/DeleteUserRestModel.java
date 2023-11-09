@@ -1,11 +1,10 @@
-package com.billionairestore.userservice.core.events;
+package com.billionairestore.userservice.command.rest;
 
 import com.billionairestore.userservice.command.UserRole;
 import lombok.Data;
 
 @Data
-public class UserCreatedEvent {
-    private String aggregateId;
+public class DeleteUserRestModel {
     private String userId;
     private String name;
     private String username;

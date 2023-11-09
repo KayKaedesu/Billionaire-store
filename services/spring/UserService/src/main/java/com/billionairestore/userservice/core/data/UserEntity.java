@@ -23,6 +23,7 @@ public class UserEntity implements Serializable {
     private String username;
     @Column(unique = true)
     private String password;
+    @Enumerated(EnumType.STRING)
     private UserRole userRole;
     private String imgPath;
 }
