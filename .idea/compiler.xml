@@ -13,6 +13,7 @@
         <module name="InventoryService" />
         <module name="PaymentService" />
         <module name="ApiGateWay" />
+        <module name="LogService" />
         <module name="base" />
         <module name="Core" />
       </profile>
@@ -24,6 +25,7 @@
       <module name="Core" options="-parameters" />
       <module name="DiscoveryServer" options="-parameters" />
       <module name="InventoryService" options="-parameters" />
+      <module name="LogService" options="-parameters" />
       <module name="PaymentService" options="-parameters" />
       <module name="ProductService" options="-parameters" />
       <module name="UserService" options="-parameters" />

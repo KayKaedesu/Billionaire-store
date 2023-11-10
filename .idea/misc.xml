@@ -18,6 +18,7 @@
         <option value="$PROJECT_DIR$/services/spring/ApiGateWay/pom.xml" />
         <option value="$PROJECT_DIR$/UserService/pom.xml" />
         <option value="$PROJECT_DIR$/services/spring/UserService/pom.xml" />
+        <option value="$PROJECT_DIR$/services/spring/LogService/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
