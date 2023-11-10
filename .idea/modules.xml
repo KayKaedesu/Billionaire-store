@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Billionare-store.iml" filepath="$PROJECT_DIR$/.idea/Billionare-store.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/spring/java/base.iml" filepath="$PROJECT_DIR$/services/spring/java/base.iml" />
     </modules>
   </component>
 </project>

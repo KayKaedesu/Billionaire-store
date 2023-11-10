@@ -8,11 +8,11 @@
 		<version>3.1.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.Billionaire-store</groupId>
-	<artifactId>InventoryService</artifactId>
+	<groupId>com.billionairestore</groupId>
+	<artifactId>ShelfService</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>InventoryService</name>
-	<description>InventoryService</description>
+	<name>ShelfService</name>
+	<description>ShelfService</description>
 	<properties>
 		<java.version>17</java.version>
 		<spring-cloud.version>2022.0.4</spring-cloud.version>
@@ -73,7 +73,8 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
-</dependencies>
+	</dependencies>
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>

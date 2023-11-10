@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="DiscoveryServer" />
         <module name="ProductService" />
+        <module name="ShelfService" />
         <module name="InventoryService" />
         <module name="PaymentService" />
         <module name="ApiGateWay" />
@@ -25,6 +26,7 @@
       <module name="InventoryService" options="-parameters" />
       <module name="PaymentService" options="-parameters" />
       <module name="ProductService" options="-parameters" />
+      <module name="ShelfService" options="-parameters" />
       <module name="base" options="-parameters" />
     </option>
   </component>

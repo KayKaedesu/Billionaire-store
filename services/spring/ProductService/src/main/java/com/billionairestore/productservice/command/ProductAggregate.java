@@ -3,12 +3,12 @@ package com.billionairestore.productservice.command;
 import com.billionairestore.productservice.command.commands.CreateProductCommand;
 import com.billionairestore.productservice.core.events.ProductCreatedEvent;
 import org.axonframework.commandhandling.CommandHandler;
-import org.axonframework.eventhandling.EventHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
 import org.axonframework.modelling.command.AggregateLifecycle;
 import org.axonframework.spring.stereotype.Aggregate;
 import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Aggregate
 public class ProductAggregate {
@@ -24,6 +24,7 @@ public class ProductAggregate {
     public ProductAggregate(CreateProductCommand command) {
         ProductCreatedEvent event = new ProductCreatedEvent();
         BeanUtils.copyProperties(command, event);
+
         AggregateLifecycle.apply(event);
     }
 
