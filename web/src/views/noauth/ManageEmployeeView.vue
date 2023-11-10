@@ -26,30 +26,8 @@
         รายชื่อพนักงาน
       </n-text>
       <n-space class="butt">
-        <Icon icon="iconoir:sort-up" width="35px"/>
-        <n-select class="select"
-                  default-value="เรียงตามลำดับ"
-                  :options="[
-                   {
-                    label: 'เรียงตามลำดับ',
-                    value: '1',
-                  },
-                  {
-                    label: 'เรียงตามชื่อ',
-                    value: '2',
-                  },
-                  {
-                    label: 'เรียงตามรหัสพนักงาน',
-                    value: '3',
-                  },
-                  {
-                    label: 'เรียงตามตำแหน่ง',
-                    value: '4',
-                  },
-                ]"
-        />
         <n-button round class="button" type="success"  @click="showModal = true" >เพิ่มพนักงาน</n-button>
-        <n-button round quaternary dashed @click="" ><n-icon :component="Refresh" size="25" :depth="1" /></n-button>
+        <n-button round quaternary dashed @click="refreshPage" ><n-icon :component="Refresh" size="25" :depth="1" /></n-button>
         <n-modal v-model:show="showModal" preset="dialog" title="Dialog">
           <template #header>
             <div>เพิ่มพนักงาน</div>
@@ -79,11 +57,11 @@
       </n-space>
     </n-space>
 
-    <n-data-table
+    <n-data-table style="display: flex; flex-direction: column; align-items: center; justify-content: center;"
         ref="table"
         :columns="columns"
         :data="data"
-        :pagination="pagination"
+        :pagination ="pagination"
     />
   </n-space>
 
@@ -122,7 +100,7 @@
       <div>ยืนยันการลบพนักงาน</div>
     </template>
     <template #action>
-      <n-button round type="error" @click="handleConfirmDelete, showDeleteModal = false">ยืนยัน</n-button>
+      <n-button round type="error" @click="handleConfirmDelete, showDeleteModal = false">ลบ</n-button>
       <n-button round @click="showDeleteModal = false">ยกเลิก</n-button>
     </template>
   </n-modal>
@@ -133,8 +111,14 @@
 import { Refresh, SearchOutline} from '@vicons/ionicons5'
 import { h,defineComponent, reactive, ref } from 'vue'
 import {NButton, NModal  } from 'naive-ui'
+import router from "@/router";
 
 export default defineComponent({
+  methods: {
+    router() {
+      return router
+    }
+  },
   setup () {
 
     const showEditModal = ref(false);
@@ -165,38 +149,41 @@ export default defineComponent({
       {
         title: 'ลำดับ',
         key: 'order',
-        width: '50px',
+        width: '150px',
         align: 'center',
+        sorter: (row1: any, row2: any) => row1.order - row2.order
       },
       {
         title: 'ชื่อพนักงาน',
         key: 'name',
-        width: '150px',
+        width: '250px',
         align: 'center',
       },
       {
         title: 'รหัสพนักงาน',
         key: 'id',
-        width: '150px',
+        width: '150',
         align: 'center',
+        sorter: (row1: any, row2: any) => row1.id - row2.id
+
       },
       {
         title: 'ตำแหน่ง',
         key: 'role',
-        width: '150px',
+        width: '200px',
         align: 'center',
       },
       {
         title: 'อีเมล',
         key: 'email',
-        width: '200px',
+        width: '250px',
         align: 'center',
       },
       {
         title: 'จัดการ',
         key: 'actions',
         align: 'center',
-        width: '100px',
+        width: '200px',
         fixed: 'left',
         render: (row: any) => {
           return h('div', [
@@ -251,6 +238,10 @@ export default defineComponent({
     const showModal = ref(false);
     const EditEmployee = ref(null);
 
+    const refreshPage = () => {
+      location.reload(); // Reloads the current page
+    };
+
     return {
       data,
       columns,
@@ -265,7 +256,8 @@ export default defineComponent({
       showDeleteModal,
       DeleteEmployee,
       handleDeleteButton,
-      handleConfirmDelete
+      handleConfirmDelete,
+      refreshPage
     }
   }
 })
@@ -276,22 +268,20 @@ export default defineComponent({
   padding: 10px;
 }
 .button {
-  width: 110px;
+  width: 150px;
   height: 35px;
   font-size: 15px;
 }
 .top-content {
   margin-top: 50px;
   margin-left: 45%;
-  width: 1000px;
+  width: 950px;
   display: flex;
   align-items: center;
 }
 .butt{
+  width: 100%;
   margin-left: 250px;
-}
-.select{
-  width: 180px;
 }
 .text{
   font-weight: bold;
