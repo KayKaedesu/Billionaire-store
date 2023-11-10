@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/services/spring/ApiGateWay/ApiGateWay.iml" filepath="$PROJECT_DIR$/services/spring/ApiGateWay/ApiGateWay.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Billionare-store.iml" filepath="$PROJECT_DIR$/.idea/Billionare-store.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/spring/core/Core.iml" filepath="$PROJECT_DIR$/services/spring/core/Core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/spring/DiscoveryServer/DiscoveryServer.iml" filepath="$PROJECT_DIR$/services/spring/DiscoveryServer/DiscoveryServer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/spring/InventoryService/InventoryService.iml" filepath="$PROJECT_DIR$/services/spring/InventoryService/InventoryService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/spring/PaymentService/PaymentService.iml" filepath="$PROJECT_DIR$/services/spring/PaymentService/PaymentService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/spring/ProductService/ProductService.iml" filepath="$PROJECT_DIR$/services/spring/ProductService/ProductService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/spring/ShelfService/ShelfService.iml" filepath="$PROJECT_DIR$/services/spring/ShelfService/ShelfService.iml" />
       <module fileurl="file://$PROJECT_DIR$/services/spring/java/base.iml" filepath="$PROJECT_DIR$/services/spring/java/base.iml" />
     </modules>
   </component>

@@ -3,31 +3,16 @@
   <component name="CompilerConfiguration">
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
-      <profile name="Maven default annotation processors profile" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <module name="DiscoveryServer" />
-        <module name="ProductService" />
-        <module name="ShelfService" />
-        <module name="InventoryService" />
-        <module name="PaymentService" />
-        <module name="ApiGateWay" />
-        <module name="base" />
-        <module name="Core" />
-      </profile>
     </annotationProcessing>
-  </component>
-  <component name="JavacSettings">
-    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="ApiGateWay" options="-parameters" />
-      <module name="Core" options="-parameters" />
-      <module name="DiscoveryServer" options="-parameters" />
-      <module name="InventoryService" options="-parameters" />
-      <module name="PaymentService" options="-parameters" />
-      <module name="ProductService" options="-parameters" />
-      <module name="ShelfService" options="-parameters" />
-      <module name="base" options="-parameters" />
-    </option>
+    <bytecodeTargetLevel>
+      <module name="ApiGateWay" target="17" />
+      <module name="base" target="17" />
+      <module name="Core" target="17" />
+      <module name="DiscoveryServer" target="17" />
+      <module name="InventoryService" target="17" />
+      <module name="PaymentService" target="17" />
+      <module name="ProductService" target="17" />
+      <module name="ShelfService" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>

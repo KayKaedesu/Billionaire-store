@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="Maven: org.axonframework:axon-eventsourcing:4.9.0" type="java-imported" external-system-id="Maven">
+    <properties groupId="org.axonframework" artifactId="axon-eventsourcing" version="4.9.0" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/axonframework/axon-eventsourcing/4.9.0/axon-eventsourcing-4.9.0.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/axonframework/axon-eventsourcing/4.9.0/axon-eventsourcing-4.9.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/axonframework/axon-eventsourcing/4.9.0/axon-eventsourcing-4.9.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
