@@ -1,12 +1,11 @@
-package com.billionairestore.shelfservice.command.create;
+package com.billionairestore.shelfservice.command.commands;
 
 import lombok.Builder;
 import lombok.Data;
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
-
 @Builder
 @Data
-public class CreateShelfCommand {
+public class UpdateShelfCommand {
     @TargetAggregateIdentifier
     private final String aggregateId;
 //    private final String shelfId;

@@ -23,6 +23,7 @@
 <!--			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>-->
 <!--		</dependency>-->
 
+
 		<dependency>
 			<groupId>com.billionairestore</groupId>
 			<artifactId>Core</artifactId>

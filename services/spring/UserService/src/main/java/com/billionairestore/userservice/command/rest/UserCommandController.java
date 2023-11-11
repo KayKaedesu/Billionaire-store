@@ -1,9 +1,9 @@
 package com.billionairestore.userservice.command.rest;
 
-import com.billionairestore.userservice.command.create.CreateUserCommand;
+import com.billionairestore.userservice.command.commands.CreateUserCommand;
 import com.billionairestore.userservice.command.UserRole;
-import com.billionairestore.userservice.command.create.DeleteUserCommand;
-import com.billionairestore.userservice.command.create.UpdateUserCommand;
+import com.billionairestore.userservice.command.commands.DeleteUserCommand;
+import com.billionairestore.userservice.command.commands.UpdateUserCommand;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;

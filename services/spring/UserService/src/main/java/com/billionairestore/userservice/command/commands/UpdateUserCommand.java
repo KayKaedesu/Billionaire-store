@@ -1,13 +1,12 @@
-package com.billionairestore.userservice.command.create;
+package com.billionairestore.userservice.command.commands;
 
 import com.billionairestore.userservice.command.UserRole;
 import lombok.Builder;
 import lombok.Data;
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
-
 @Builder
 @Data
-public class DeleteUserCommand {
+public class UpdateUserCommand {
     @TargetAggregateIdentifier
     private final String aggregateId;
     private final String userId;

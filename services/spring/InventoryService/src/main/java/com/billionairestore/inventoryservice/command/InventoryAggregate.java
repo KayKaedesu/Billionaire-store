@@ -31,6 +31,7 @@ public class InventoryAggregate {
         this.productId = event.getProductId();
     }
 
+
     @CommandHandler
     public InventoryAggregate(DeleteProductInventoryCommand command) {
         InventoryProductDeletedEvent event = new InventoryProductDeletedEvent(command.getProductId());

@@ -1,8 +1,8 @@
 package com.billionairestore.shelfservice.command.rest;
 
-import com.billionairestore.shelfservice.command.create.CreateShelfCommand;
-import com.billionairestore.shelfservice.command.create.DeleteShelfCommand;
-import com.billionairestore.shelfservice.command.create.UpdateShelfCommand;
+import com.billionairestore.shelfservice.command.commands.CreateShelfCommand;
+import com.billionairestore.shelfservice.command.commands.DeleteShelfCommand;
+import com.billionairestore.shelfservice.command.commands.UpdateShelfCommand;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
