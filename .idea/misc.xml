@@ -19,6 +19,7 @@
         <option value="$PROJECT_DIR$/services/spring/UserService/pom.xml" />
         <option value="$PROJECT_DIR$/services/spring/LogService/pom.xml" />
         <option value="$PROJECT_DIR$/services/spring/AuthService/pom.xml" />
+        <option value="$PROJECT_DIR$/services/spring/ImportService/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

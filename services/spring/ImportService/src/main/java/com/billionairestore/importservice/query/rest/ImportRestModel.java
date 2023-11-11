@@ -1,9 +1,10 @@
-package com.billionairestore.importservice.command.rest.model;
+package com.billionairestore.importservice.query.rest;
 
 import lombok.Data;
 
 @Data
-public class CreateImportRestModel {
+public class ImportRestModel {
+    private String importId;
     private String productId;
     private String name;
     private String category;
