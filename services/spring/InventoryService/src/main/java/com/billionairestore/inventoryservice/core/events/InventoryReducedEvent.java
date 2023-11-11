@@ -4,8 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-@AllArgsConstructor
 public class InventoryReducedEvent {
+    private String aggregateId;
     private String productId;
     private int quantity;
 }

@@ -1,4 +1,4 @@
-package com.billionairestore.importservice.command.rest;
+package com.billionairestore.importservice.command;
 
 import com.billionairestore.importservice.command.commands.CreateImportCommand;
 import com.billionairestore.importservice.command.rest.model.CreateImportRestModel;

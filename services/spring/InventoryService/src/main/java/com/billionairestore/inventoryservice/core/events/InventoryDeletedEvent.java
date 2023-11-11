@@ -1,10 +1,10 @@
 package com.billionairestore.inventoryservice.core.events;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
-@AllArgsConstructor
 @Data
-public class InventoryProductDeletedEvent {
+public class InventoryDeletedEvent {
+    private String aggregateId;
     private String productId;
+    private int quantity;
 }

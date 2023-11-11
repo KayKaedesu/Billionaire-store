@@ -13,6 +13,10 @@ import java.io.Serializable;
 @Table(name = "inventory")
 @Data
 public class InventoryEntity implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 8945579629032859722L;
+
     @Id
     @Column(unique = true)
     private String productId;
