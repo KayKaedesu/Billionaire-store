@@ -1,17 +1,18 @@
-package com.billionairestore.productservice.command.commands;
+package com.billionairestore.importservice.command.commands;
 
+
+import jakarta.persistence.Column;
 import lombok.Builder;
 import lombok.Data;
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
 @Data
 @Builder
-public class CreateProductCommand {
+public class CreateImportCommand {
     @TargetAggregateIdentifier
+    private final String importId;
     private final String productId;
     private final String name;
-    private final String imageUrl;
     private final String category;
     private final Double buyPrice;
-    private final Double sellPrice;
 }

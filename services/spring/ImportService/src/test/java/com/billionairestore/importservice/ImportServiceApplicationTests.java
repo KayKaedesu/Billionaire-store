@@ -1,10 +1,10 @@
-package com.billionarestore.base;
+package com.billionairestore.importservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class JavaApplicationTests {
+class ImportServiceApplicationTests {
 
     @Test
     void contextLoads() {

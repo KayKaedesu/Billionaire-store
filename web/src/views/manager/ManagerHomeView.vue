@@ -1,136 +1,60 @@
+<template>
+  <TimeRangePicker
+    @update:model-value="(newTime) => (time = newTime)"
+    style="padding-bottom: 1rem"
+  />
+  <NSpace>
+    {{ time }}
+    <n-date-picker
+      v-if="isCustomTime"
+      type="datetimerange"
+      clearable
+      v-model:value="customTime"
+      :actions="['confirm']"
+      :default-time="['00:00:00', '23:59:59']"
+    />
+  </NSpace>
+  <NSpace vertical>
+    <GraphTemplateVue />
+  </NSpace>
+</template>
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { NCard, NGrid, NGridItem } from 'naive-ui'
-import { Bar } from 'vue-chartjs'
-import {
-  Chart as ChartJS,
-  Title,
-  Tooltip,
-  Legend,
-  BarElement,
-  CategoryScale,
-  LinearScale,
-} from 'chart.js'
-
-ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
-
+import TimeRangePicker from '@/components/manager/report/TimeRangePicker.vue'
+import type { TimeRange } from '@/components/manager/report/types'
+import { NSpace, NDatePicker } from 'naive-ui'
+import GraphTemplateVue from '@/components/manager/report/GraphTemplate.vue'
 export default defineComponent({
   name: 'ManagerHomeView',
-  components: {
-    NCard,
-    Bar,
-    NGrid,
-    NGridItem,
-  },
   data() {
     return {
-      revenueOptions: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            position: 'bottom',
-          },
-        },
-      },
-      revenueData: {
-        labels: [
-          'January',
-          'February',
-          'March',
-          'April',
-          'May',
-          'June',
-          'July',
-        ],
-        datasets: [
-          {
-            label: 'Revenue',
-            data: [65, 59, 80, 81, 56, 55, 40],
-            fill: false,
-            borderColor: 'rgb(75, 192, 192)',
-            tension: 0.1,
-          },
-        ],
-      },
-      ordersOptions: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            position: 'bottom',
-          },
-        },
-      },
-      ordersData: {
-        labels: [
-          'January',
-          'February',
-          'March',
-          'April',
-          'May',
-          'June',
-          'July',
-        ],
-        datasets: [
-          {
-            label: 'Orders',
-            data: [12, 19, 3, 5, 2, 3, 7],
-            fill: false,
-            borderColor: 'rgb(75, 192, 192)',
-            tension: 0.1,
-          },
-        ],
-      },
-      customersOptions: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            position: 'bottom',
-          },
-        },
-      },
-      customersData: {
-        labels: [
-          'January',
-          'February',
-          'March',
-          'April',
-          'May',
-          'June',
-          'July',
-        ],
-        datasets: [
-          {
-            label: 'Customers',
-            data: [10, 20, 30, 40, 50, 60, 70],
-            fill: false,
-            borderColor: 'rgb(75, 192, 192)',
-            tension: 0.1,
-          },
-        ],
-      },
+      time: undefined as TimeRange | undefined,
+      customTime: undefined as [number, number] | undefined,
     }
+  },
+  methods: {
+    formatTime(dateNumber: number) {
+      return new Date(dateNumber)
+    },
+  },
+  components: {
+    TimeRangePicker,
+    NSpace,
+    NDatePicker,
+    GraphTemplateVue,
+  },
+  computed: {
+    isCustomTime() {
+      return !this.time
+    },
+  },
+  watch: {
+    customTime(newTime) {
+      this.time = {
+        startTime: this.formatTime(newTime[0]),
+        endTime: this.formatTime(newTime[1]),
+      }
+    },
   },
 })
 </script>
-<template>
-  <NGrid x-gap="12" :cols="3">
-    <NGridItem>
-      <n-card title="Revenue">
-        <Bar :options="revenueOptions" :data="revenueData" />
-      </n-card>
-    </NGridItem>
-    <NGridItem>
-      <n-card title="Orders"> </n-card>
-    </NGridItem>
-    <NGridItem>
-      <n-card title="Customers"> </n-card>
-    </NGridItem>
-  </NGrid>
-</template>
-
-<style scoped>
-/* Add any custom styles here */
-</style>

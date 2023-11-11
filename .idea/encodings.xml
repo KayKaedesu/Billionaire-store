@@ -4,11 +4,12 @@
     <file url="file://$PROJECT_DIR$/UserService/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/services/spring/ApiGateWay/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/services/spring/ApiGateWay/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/services/spring/AuthService/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/services/spring/Core/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/services/spring/Core/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/services/spring/DiscoveryServer/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/services/spring/DiscoveryServer/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/services/spring/ImportService/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/services/spring/ImportService/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/services/spring/InventoryService/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/services/spring/InventoryService/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/services/spring/LogService/src/main/java" charset="UTF-8" />
@@ -17,7 +18,6 @@
     <file url="file://$PROJECT_DIR$/services/spring/ProductService/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/services/spring/ProductService/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/services/spring/ShelfService/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/services/spring/ShelfService/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/services/spring/UserService/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/services/spring/UserService/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/services/spring/base/src/main/java" charset="UTF-8" />

@@ -8,25 +8,27 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="DiscoveryServer" />
+        <module name="ImportService" />
         <module name="UserService" />
         <module name="ProductService" />
         <module name="ShelfService" />
         <module name="InventoryService" />
-        <module name="AuthService" />
         <module name="PaymentService" />
         <module name="ApiGateWay" />
         <module name="LogService" />
-        <module name="base" />
         <module name="Core" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="base" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="ApiGateWay" options="-parameters" />
-      <module name="AuthService" options="-parameters" />
       <module name="Core" options="-parameters" />
       <module name="DiscoveryServer" options="-parameters" />
+      <module name="ImportService" options="-parameters" />
       <module name="InventoryService" options="-parameters" />
       <module name="LogService" options="-parameters" />
       <module name="PaymentService" options="-parameters" />
