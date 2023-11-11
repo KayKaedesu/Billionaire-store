@@ -6,13 +6,8 @@ import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
 @Data
 @Builder
-public class CreateProductCommand {
+public class DeleteProductCommand {
     @TargetAggregateIdentifier
     private final String aggregateId;
     private final String productId;
-    private final String name;
-    private final String imageUrl;
-    private final String category;
-    private final Double buyPrice;
-    private final Double sellPrice;
 }
