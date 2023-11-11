@@ -9,6 +9,7 @@ import org.axonframework.modelling.command.TargetAggregateIdentifier;
 public class CreateShelfCommand {
     @TargetAggregateIdentifier
     private final String aggregateId;
+//    private final String shelfId;
     private final String productId;
-    private final String amount;
+    private final int quantity;
 }

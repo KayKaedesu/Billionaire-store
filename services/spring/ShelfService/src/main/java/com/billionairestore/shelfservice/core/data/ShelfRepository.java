@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface ShelfRepository extends JpaRepository<ShelfEntity, String> {
-    ShelfEntity findByShelfId(String userId);
-    List<ShelfEntity> removeByShelfId(String userId);
+    ShelfEntity findByProductId(String productId);
+
 }

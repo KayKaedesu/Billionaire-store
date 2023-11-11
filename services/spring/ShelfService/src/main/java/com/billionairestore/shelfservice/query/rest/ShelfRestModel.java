@@ -4,6 +4,7 @@ import lombok.Data;
 
 @Data
 public class ShelfRestModel {
+//    private String shelfId;
     private String productId;
-    private String amount;
+    private int quantity;
 }

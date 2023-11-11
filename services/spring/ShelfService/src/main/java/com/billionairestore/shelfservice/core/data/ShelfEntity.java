@@ -12,10 +12,14 @@ import java.io.Serializable;
 public class ShelfEntity implements Serializable {
 
     @Serial
-    private static final long serialVersionUID = -3528785507428466022L;
+    private static final long serialVersionUID = -2143928070515464610L;
+
+//    @Id
+//    @Column(unique = true)
+//    private String shelfId;
     @Id
     @Column(unique = true)
     private String productId;
-    private String amount;
+    private int quantity;
 
 }

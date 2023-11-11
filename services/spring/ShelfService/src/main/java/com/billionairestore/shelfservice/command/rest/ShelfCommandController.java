@@ -6,10 +6,7 @@ import com.billionairestore.shelfservice.command.create.UpdateShelfCommand;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
@@ -24,12 +21,14 @@ public class ShelfCommandController {
         this.env = env;
     }
 
+
     @RequestMapping(value =  "/shelf",method = RequestMethod.POST)
     public String addShelf(@RequestBody CreateShelfRestModel model){
         CreateShelfCommand command = CreateShelfCommand.builder()
                 .aggregateId(UUID.randomUUID().toString())
+//                .shelfId(UUID.randomUUID().toString())
                 .productId(model.getProductId())
-                .amount(model.getAmount())
+                .quantity(0)
                 .build();
         String result;
         try {
@@ -45,8 +44,9 @@ public class ShelfCommandController {
     public String deleteShelf(@RequestBody DeleteShelfRestModel model){
         DeleteShelfCommand command = DeleteShelfCommand.builder()
                 .aggregateId(UUID.randomUUID().toString())
+//                .shelfId(model.getShelfId())
                 .productId(model.getProductId())
-                .amount(model.getAmount())
+                .quantity(model.getQuantity())
                 .build();
         String result;
         try {
@@ -62,8 +62,9 @@ public class ShelfCommandController {
     public String putShelf(@RequestBody UpdateShelfRestModel model){
         UpdateShelfCommand command = UpdateShelfCommand.builder()
                 .aggregateId(UUID.randomUUID().toString())
+//                .shelfId(model.getShelfId())
                 .productId(model.getProductId())
-                .amount(model.getAmount())
+                .quantity(model.getQuantity())
                 .build();
         String result;
         try {

@@ -17,13 +17,14 @@ import org.springframework.beans.BeanUtils;
 public class ShelfAggregate {
     @AggregateIdentifier
     private String aggregateId;
+//    private String shelfId;
     private String productId;
-    private String amount;
+    private int quantity;
 
     public ShelfAggregate(){}
     @CommandHandler
     public ShelfAggregate(CreateShelfCommand createShelfCommand){
-        if (createShelfCommand.getProductId().isBlank() || createShelfCommand.getAmount().isBlank()){
+        if (createShelfCommand.getProductId().isBlank()){
             throw new IllegalArgumentException("กรอกให้ครบ");
         }
         ShelfCreatedEvent shelfCreatedEvent = new ShelfCreatedEvent();
@@ -43,7 +44,7 @@ public class ShelfAggregate {
 
     @CommandHandler
     public ShelfAggregate(UpdateShelfCommand updateShelfCommand){
-        if (updateShelfCommand.getProductId().isBlank() || updateShelfCommand.getAmount().isBlank()){
+        if (updateShelfCommand.getProductId().isBlank()){
             throw new IllegalArgumentException("กรอกให้ครบด้วย");
         }
         ShelfUpdatedEvent shelfUpdatedEvent = new ShelfUpdatedEvent();
@@ -55,23 +56,26 @@ public class ShelfAggregate {
     public void on(ShelfCreatedEvent shelfCreatedEvent) {
         System.out.println("ON AGGREGATE " + shelfCreatedEvent);
         this.aggregateId = shelfCreatedEvent.getAggregateId();
+//        this.shelfId = shelfCreatedEvent.getShelfId();
         this.productId = shelfCreatedEvent.getProductId();
-        this.amount = shelfCreatedEvent.getAmount();
+        this.quantity = shelfCreatedEvent.getQuantity();
     }
 
     @EventSourcingHandler
     public void on(ShelfDeletedEvent shelfDeletedEvent) {
         System.out.println("ON AGGREGATE " + shelfDeletedEvent);
         this.aggregateId = shelfDeletedEvent.getAggregateId();
+//        this.shelfId= shelfDeletedEvent.getShelfId();
         this.productId = shelfDeletedEvent.getProductId();
-        this.amount = shelfDeletedEvent.getAmount();
+        this.quantity = shelfDeletedEvent.getQuantity();
     }
 
     @EventSourcingHandler
     public void on(ShelfUpdatedEvent shelfUpdatedEvent) {
         System.out.println("ON AGGREGATE " + shelfUpdatedEvent);
         this.aggregateId = shelfUpdatedEvent.getAggregateId();
+//        this.shelfId= shelfUpdatedEvent.getShelfId();
         this.productId = shelfUpdatedEvent.getProductId();
-        this.amount = shelfUpdatedEvent.getAmount();
+        this.quantity = shelfUpdatedEvent.getQuantity();
     }
 }

@@ -4,6 +4,8 @@ import lombok.Data;
 
 @Data
 public class DeleteShelfRestModel {
+//    private final String shelfId;
     private final String productId;
-    private final String amount;
+    private final int quantity;
+
 }
