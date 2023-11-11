@@ -20,6 +20,7 @@
         <option value="$PROJECT_DIR$/services/spring/LogService/pom.xml" />
         <option value="$PROJECT_DIR$/services/spring/AuthService/pom.xml" />
         <option value="$PROJECT_DIR$/services/spring/ImportService/pom.xml" />
+        <option value="$PROJECT_DIR$/services/spring/POSService/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
@@ -28,7 +29,7 @@
       </set>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_20" project-jdk-name="17" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_18" project-jdk-name="17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>
