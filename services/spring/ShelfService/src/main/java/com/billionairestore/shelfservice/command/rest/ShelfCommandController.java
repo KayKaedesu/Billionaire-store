@@ -1,0 +1,77 @@
+package com.billionairestore.shelfservice.command.rest;
+
+import com.billionairestore.shelfservice.command.create.CreateShelfCommand;
+import com.billionairestore.shelfservice.command.create.DeleteShelfCommand;
+import com.billionairestore.shelfservice.command.create.UpdateShelfCommand;
+import org.axonframework.commandhandling.gateway.CommandGateway;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.UUID;
+
+@RestController
+public class ShelfCommandController {
+    private final Environment env;
+    private final CommandGateway commandGateway;
+
+    @Autowired
+    public ShelfCommandController(Environment env, CommandGateway commandGateway){
+        this.commandGateway = commandGateway;
+        this.env = env;
+    }
+
+    @RequestMapping(value =  "/shelf",method = RequestMethod.POST)
+    public String addShelf(@RequestBody CreateShelfRestModel model){
+        CreateShelfCommand command = CreateShelfCommand.builder()
+                .aggregateId(UUID.randomUUID().toString())
+                .productId(model.getProductId())
+                .amount(model.getAmount())
+                .build();
+        String result;
+        try {
+            result = commandGateway.sendAndWait(command);
+        }
+        catch (Exception e){
+             result = e.getLocalizedMessage();
+        }
+        return result;
+    }
+
+    @RequestMapping(value =  "/shelf",method = RequestMethod.DELETE)
+    public String deleteShelf(@RequestBody DeleteShelfRestModel model){
+        DeleteShelfCommand command = DeleteShelfCommand.builder()
+                .aggregateId(UUID.randomUUID().toString())
+                .productId(model.getProductId())
+                .amount(model.getAmount())
+                .build();
+        String result;
+        try {
+            result = commandGateway.sendAndWait(command);
+        }
+        catch (Exception e){
+            result = e.getLocalizedMessage();
+        }
+        return result;
+    }
+
+    @RequestMapping(value =  "/shelf",method = RequestMethod.PUT)
+    public String putShelf(@RequestBody UpdateShelfRestModel model){
+        UpdateShelfCommand command = UpdateShelfCommand.builder()
+                .aggregateId(UUID.randomUUID().toString())
+                .productId(model.getProductId())
+                .amount(model.getAmount())
+                .build();
+        String result;
+        try {
+            result = commandGateway.sendAndWait(command);
+        }
+        catch (Exception e){
+            result = e.getLocalizedMessage();
+        }
+        return result;
+    }
+}
