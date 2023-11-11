@@ -1,35 +1,33 @@
 <template>
   <n-space vertical>
     <n-space
-      vertical
-      :style="{
-        position: 'fixed',
+        vertical
+        :style="{
         top: 0,
         left: 0,
         width: '100%',
-        zIndex: 100,
+        zIndex: 0,
         background: 'white',
-        padding: '10px',
       }"
     >
       <n-input-group class="serch">
         <n-icon
-          :component="SearchOutline"
-          size="35"
-          :depth="1"
-          style="margin-right: 20px"
+            :component="SearchOutline"
+            size="35"
+            :depth="1"
+            style="margin-right: 20px"
         />
         <n-input
-          style="
+            style="
             border-radius: 25px;
-            width: 50%;
+            width: 90%;
             justify-content: center;
             height: 35px;
           "
-          clearable
-          maxlength="50"
-          show-count
-          placeholder="ค้นหารายชื่อพนักงาน, รหัสพนักงาน"
+            clearable
+            maxlength="50"
+            show-count
+            placeholder="ค้นหารายชื่อพนักงาน, รหัสพนักงาน"
         >
         </n-input>
       </n-input-group>
@@ -39,11 +37,12 @@
       <n-text class="text"> รายชื่อพนักงาน </n-text>
       <n-space class="butt">
         <n-button round class="button" type="success" @click="showModal = true"
-          >เพิ่มพนักงาน</n-button
+        >เพิ่มพนักงาน</n-button
         >
         <n-button round quaternary dashed @click="refreshPage"
-          ><n-icon :component="Refresh" size="25" :depth="1"
+        ><n-icon :component="Refresh" size="25" :depth="1"
         /></n-button>
+
         <n-modal v-model:show="showModal" preset="dialog" title="Dialog">
           <template #header>
             <div>เพิ่มพนักงาน</div>
@@ -51,29 +50,29 @@
           <template #action>
             <n-space vertical style="margin-right: 20px; width: 100%">
               <n-input
-                style="border-radius: 25px; margin-bottom: 10px"
-                clearable
-                maxlength="50"
-                show-count
-                placeholder="ระบุชื่อพนักงาน"
+                  style="border-radius: 25px; margin-bottom: 10px"
+                  clearable
+                  maxlength="50"
+                  show-count
+                  placeholder="ระบุชื่อพนักงาน"
               ></n-input>
               <n-input
-                style="border-radius: 25px; margin-bottom: 10px"
-                clearable
-                maxlength="10"
-                show-count
-                placeholder="ระบุรหัสพนักงาน"
+                  style="border-radius: 25px; margin-bottom: 10px"
+                  clearable
+                  maxlength="10"
+                  show-count
+                  placeholder="ระบุรหัสพนักงาน"
               ></n-input>
               <n-input
-                style="border-radius: 25px; margin-bottom: 10px"
-                clearable
-                maxlength="50"
-                show-count
-                placeholder="ระบุอีเมล"
+                  style="border-radius: 25px; margin-bottom: 10px"
+                  clearable
+                  maxlength="50"
+                  show-count
+                  placeholder="ระบุอีเมล"
               ></n-input>
               <n-select
-                default-value="ระบุุตำแหน่ง"
-                :options="[
+                  default-value="ระบุุตำแหน่ง"
+                  :options="[
                   {
                     label: 'แคชเชียร์',
                     value: '1',
@@ -85,34 +84,29 @@
                 ]"
               />
               <n-button
-                round
-                style="
+                  round
+                  style="
                   margin-left: 39%;
                   margin-top: 25px;
                   width: 110px;
                   height: 35px;
                 "
-                type="success"
-                @click="showModal = false"
-                >เพิ่มพนักงาน</n-button
+                  type="success"
+                  @click="handleConfirmEdit"
+              >โอโห</n-button
               >
             </n-space>
           </template>
         </n-modal>
+
       </n-space>
     </n-space>
 
     <n-data-table
-      style="
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-      "
-      ref="table"
-      :columns="columns"
-      :data="data"
-      :pagination="pagination"
+        ref="table"
+        :columns="columns"
+        :data="data"
+        :pagination="pagination"
     />
   </n-space>
 
@@ -123,29 +117,29 @@
     <template #action>
       <n-space vertical style="margin-right: 20px; width: 100%">
         <n-input
-          style="border-radius: 25px; margin-bottom: 10px"
-          clearable
-          maxlength="50"
-          show-count
-          placeholder="ระบุชื่อพนักงาน"
+            style="border-radius: 25px; margin-bottom: 10px"
+            clearable
+            maxlength="50"
+            show-count
+            placeholder="ระบุชื่อพนักงาน"
         ></n-input>
         <n-input
-          style="border-radius: 25px; margin-bottom: 10px"
-          clearable
-          maxlength="10"
-          show-count
-          placeholder="ระบุรหัสพนักงาน"
+            style="border-radius: 25px; margin-bottom: 10px"
+            clearable
+            maxlength="10"
+            show-count
+            placeholder="ระบุรหัสพนักงาน"
         ></n-input>
         <n-input
-          style="border-radius: 25px; margin-bottom: 10px"
-          clearable
-          maxlength="50"
-          show-count
-          placeholder="ระบุอีเมล"
+            style="border-radius: 25px; margin-bottom: 10px"
+            clearable
+            maxlength="50"
+            show-count
+            placeholder="ระบุอีเมล"
         ></n-input>
         <n-select
-          default-value="ระบุุตำแหน่ง"
-          :options="[
+            default-value="ระบุุตำแหน่ง"
+            :options="[
             {
               label: 'แคชเชียร์',
               value: '1',
@@ -158,10 +152,10 @@
         />
         <n-space style="margin-top: 30px; margin-left: 35%">
           <n-button
-            round
-            type="info"
-            @click="handleConfirmEdit, (showEditModal = false)"
-            >ยืนยัน</n-button
+              round
+              type="info"
+              @click="handleConfirmEdit, (showEditModal = false)"
+          >ยืนยัน</n-button
           >
           <n-button round @click="showEditModal = false">ยกเลิก</n-button>
         </n-space>
@@ -175,10 +169,10 @@
     </template>
     <template #action>
       <n-button
-        round
-        type="error"
-        @click="handleConfirmDelete, (showDeleteModal = false)"
-        >ลบ</n-button
+          round
+          type="error"
+          @click="handleConfirmDelete, (showDeleteModal = false)"
+      >ยืนยัน</n-button
       >
       <n-button round @click="showDeleteModal = false">ยกเลิก</n-button>
     </template>
@@ -197,6 +191,7 @@ export default defineComponent({
       return router
     },
   },
+
   setup() {
     const showEditModal = ref(false)
     const editedEmployee = ref(null)
@@ -264,33 +259,33 @@ export default defineComponent({
         render: (row: any) => {
           return h('div', [
             h(
-              NButton,
-              {
-                secondary: true,
-                round: true,
-                type: 'info',
-                size: 'small',
-                onClick: () => {
-                  handleEditButton(row)
+                NButton,
+                {
+                  secondary: true,
+                  round: true,
+                  type: 'info',
+                  size: 'small',
+                  onClick: () => {
+                    handleEditButton(row)
+                  },
+                  style: {
+                    marginRight: '5px',
+                  },
                 },
-                style: {
-                  marginRight: '5px',
-                },
-              },
-              'แก้ไข'
+                'แก้ไข'
             ),
             h(
-              NButton,
-              {
-                secondary: true,
-                round: true,
-                type: 'error',
-                size: 'small',
-                onClick: () => {
-                  handleDeleteButton(row)
+                NButton,
+                {
+                  secondary: true,
+                  round: true,
+                  type: 'error',
+                  size: 'small',
+                  onClick: () => {
+                    handleDeleteButton(row)
+                  },
                 },
-              },
-              'ลบ'
+                'ลบ'
             ),
           ])
         },
@@ -308,9 +303,9 @@ export default defineComponent({
 
     const paginationReactive = reactive({
       page: 1,
-      pageSize: 10,
+      pageSize: 12,
       showSizePicker: true,
-      pageSizes: [10, 15, 20],
+      pageSizes: [12, 24, 36],
       onChange: (page: number) => {
         paginationReactive.page = page
       },
@@ -326,6 +321,7 @@ export default defineComponent({
     const refreshPage = () => {
       location.reload() // Reloads the current page
     }
+
 
     return {
       data,
@@ -349,16 +345,12 @@ export default defineComponent({
 </script>
 
 <style>
-#app {
-  padding: 10px;
-}
 .button {
   width: 150px;
   height: 35px;
   font-size: 15px;
 }
 .top-content {
-  margin-top: 50px;
   margin-left: 45%;
   width: 950px;
   display: flex;
