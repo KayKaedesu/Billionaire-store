@@ -1,5 +1,6 @@
 package com.billionairestore.shelfservice.command;
 
+import com.billionairestore.core.events.CreatedEvent;
 import com.billionairestore.shelfservice.core.data.ShelfEntity;
 import com.billionairestore.shelfservice.core.data.ShelfRepository;
 import com.billionairestore.shelfservice.core.events.ShelfCreatedEvent;
@@ -22,6 +23,16 @@ public class ShelfEventsHandler {
         BeanUtils.copyProperties(event, shelfEntity);
         shelfRepository.save(shelfEntity);
     }
+
+    @EventHandler
+    public void on(CreatedEvent event){
+        System.out.println("created from product");
+        ShelfEntity shelfEntity = new ShelfEntity();
+        shelfEntity.setProductId(event.getProductId());
+        shelfEntity.setQuantity(0);
+        shelfRepository.save(shelfEntity);
+    }
+
 
     @EventHandler
     public void on(ShelfDeletedEvent event){

@@ -1,7 +1,7 @@
 package com.billionairestore.importservice.command;
 
 import com.billionairestore.importservice.command.commands.CreateImportCommand;
-import com.billionairestore.importservice.command.rest.model.CreateImportRestModel;
+import com.billionairestore.importservice.command.rest.CreateImportRestModel;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,7 +24,6 @@ public class ImportRestController {
     @PostMapping
     public String createProduct(@RequestBody CreateImportRestModel createImportRestModel) {
         CreateImportCommand command = CreateImportCommand.builder()
-                .importId(UUID.randomUUID().toString())
                 .productId(createImportRestModel.getProductId())
                 .name(createImportRestModel.getName())
                 .category(createImportRestModel.getCategory())

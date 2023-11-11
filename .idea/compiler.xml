@@ -10,6 +10,7 @@
         <module name="UserService (2)" />
         <module name="DiscoveryServer" />
         <module name="UserService (1)" />
+        <module name="UserService" />
         <module name="ShelfService" />
         <module name="InventoryService" />
         <module name="ApiGateWay" />
@@ -24,7 +25,6 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="base" target="17" />
-      <module name="UserService" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -33,7 +33,7 @@
       <module name="AuthService" options="-parameters" />
       <module name="Core" options="-parameters" />
       <module name="DiscoveryServer" options="-parameters" />
-      <module name="ImportService" options="" />
+      <module name="ImportService" options="-parameters" />
       <module name="InventoryService" options="-parameters" />
       <module name="LogService" options="-parameters" />
       <module name="POSService" options="-parameters" />

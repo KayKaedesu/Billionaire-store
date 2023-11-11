@@ -1,4 +1,4 @@
-package com.billionairestore.importservice.command.rest.model;
+package com.billionairestore.importservice.command.rest;
 
 import lombok.Data;
 

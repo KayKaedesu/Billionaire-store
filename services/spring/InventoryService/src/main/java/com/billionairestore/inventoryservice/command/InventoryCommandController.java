@@ -24,7 +24,7 @@ public class InventoryCommandController {
     }
 
     @RequestMapping(value =  "/inventory",method = RequestMethod.POST)
-    public String addInventory(@RequestBody CreateInventoryRestModel model){
+    public String createInventory(@RequestBody CreateInventoryRestModel model){
         CreateInventoryCommand command = CreateInventoryCommand.builder()
                 .aggregateId(UUID.randomUUID().toString())
                 .productId(model.getProductId())

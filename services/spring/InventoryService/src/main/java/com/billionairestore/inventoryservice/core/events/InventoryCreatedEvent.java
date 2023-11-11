@@ -1,5 +1,6 @@
 package com.billionairestore.inventoryservice.core.events;
 
+import lombok.Builder;
 import lombok.Data;
 
 @Data

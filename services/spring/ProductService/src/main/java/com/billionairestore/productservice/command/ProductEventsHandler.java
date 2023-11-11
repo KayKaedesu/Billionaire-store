@@ -1,5 +1,6 @@
-package com.billionairestore.productservice.query;
+package com.billionairestore.productservice.command;
 
+import com.billionairestore.core.events.CreatedEvent;
 import com.billionairestore.productservice.core.data.ProductEntity;
 import com.billionairestore.productservice.core.data.ProductRepository;
 import com.billionairestore.productservice.core.events.ProductCreatedEvent;
@@ -39,7 +40,8 @@ public class ProductEventsHandler {
     }
 
     @EventHandler
-    public void on(ProductCreatedEvent event){
+    public void on(CreatedEvent event){
+        System.out.println("created");
         ProductEntity entity = new ProductEntity();
         BeanUtils.copyProperties(event, entity);
         productRepository.save(entity);
