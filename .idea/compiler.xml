@@ -7,22 +7,24 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="UserService (2)" />
         <module name="DiscoveryServer" />
-        <module name="ImportService" />
-        <module name="UserService" />
-        <module name="ProductService" />
+        <module name="UserService (1)" />
         <module name="ShelfService" />
         <module name="InventoryService" />
+        <module name="ApiGateWay" />
+        <module name="POSService" />
+        <module name="ImportService" />
+        <module name="ProductService" />
         <module name="AuthService" />
         <module name="PaymentService" />
-        <module name="ApiGateWay" />
         <module name="LogService" />
-        <module name="POSService" />
         <module name="Core" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="base" target="17" />
+      <module name="UserService" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -31,7 +33,7 @@
       <module name="AuthService" options="-parameters" />
       <module name="Core" options="-parameters" />
       <module name="DiscoveryServer" options="-parameters" />
-      <module name="ImportService" options="-parameters" />
+      <module name="ImportService" options="" />
       <module name="InventoryService" options="-parameters" />
       <module name="LogService" options="-parameters" />
       <module name="POSService" options="-parameters" />
@@ -39,6 +41,7 @@
       <module name="ProductService" options="-parameters" />
       <module name="ShelfService" options="-parameters" />
       <module name="UserService" options="-parameters" />
+      <module name="UserService (2)" options="-parameters" />
       <module name="base" options="-parameters" />
     </option>
   </component>

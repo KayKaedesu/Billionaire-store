@@ -11,11 +11,11 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name = "importlog")
+@Table(name = "poslog")
 @Data
-public class ImportLogEntity implements Serializable {
+public class POSLogEntity implements Serializable {
     @Serial
-    private static final long serialVersionUID = -2932063800221375469L;
+    private static final long serialVersionUID = 1215380801452571168L;
     @Id
     @Column(unique = true)
     private String logId;
@@ -23,6 +23,6 @@ public class ImportLogEntity implements Serializable {
     private String productId;
     private String name;
     private int quantity;
-    private double buyPrice;
+    private double price;
     private Date createdAt;
 }

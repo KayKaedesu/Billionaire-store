@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.billionairestore</groupId>
-	<artifactId>UserService</artifactId>
+	<artifactId>POSService</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>UserService</name>
-	<description>UserService</description>
+	<name>POSService</name>
+	<description>POSService</description>
 	<properties>
 		<java.version>17</java.version>
 		<spring-cloud.version>2022.0.4</spring-cloud.version>
@@ -95,6 +95,14 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
