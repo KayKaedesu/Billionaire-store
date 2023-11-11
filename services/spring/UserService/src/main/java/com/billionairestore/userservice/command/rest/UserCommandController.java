@@ -29,7 +29,7 @@ public class UserCommandController {
     public String addEmployee(@RequestBody CreateUserRestModel model){
         CreateUserCommand command = CreateUserCommand.builder()
                 .aggregateId(UUID.randomUUID().toString())
-                .userId(UUID.randomUUID().toString())
+                .userId(model.getName() + "_" + model.getUsername())
                 .name(model.getName())
                 .username(model.getUsername())
                 .password(model.getPassword())
@@ -68,7 +68,7 @@ public class UserCommandController {
     }
 
     @RequestMapping(value =  "/employee",method = RequestMethod.PUT)
-    public String putEmployee(@RequestBody DeleteUserRestModel model){
+    public String putEmployee(@RequestBody UpdateUserRestModel model){
         UpdateUserCommand command = UpdateUserCommand.builder()
                 .aggregateId(UUID.randomUUID().toString())
                 .userId(model.getUserId())
