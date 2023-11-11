@@ -21,9 +21,13 @@ public class ProductAggregate {
     private Double sellPrice;
 
     @CommandHandler
-    public ProductAggregate(CreateProductCommand command) {
+    public ProductAggregate() {
+    }
+
+    @CommandHandler
+    public ProductAggregate(CreateProductCommand createProductCommand) {
         ProductCreatedEvent event = new ProductCreatedEvent();
-        BeanUtils.copyProperties(command, event);
+        BeanUtils.copyProperties(createProductCommand, event);
 
         AggregateLifecycle.apply(event);
     }
