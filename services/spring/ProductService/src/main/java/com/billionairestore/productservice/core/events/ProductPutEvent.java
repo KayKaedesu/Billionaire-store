@@ -3,12 +3,11 @@ package com.billionairestore.productservice.core.events;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Value;
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
 @Data
 @NoArgsConstructor
-public class ProductCreatedEvent {
+public class ProductPutEvent {
     @TargetAggregateIdentifier
     private String aggregateId;
     private String productId;

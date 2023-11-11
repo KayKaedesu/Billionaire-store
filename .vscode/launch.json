@@ -1,0 +1,44 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-ApiGateWayApplication<ApiGateWay>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.billionairestore.apigateway.ApiGateWayApplication",
+      "projectName": "ApiGateWay",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-AuthServiceApplication<AuthService>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.billionairestore.authservice.AuthServiceApplication",
+      "projectName": "AuthService",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-DiscoveryServerApplication<DiscoveryServer>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.billionairestore.discoveryserver.DiscoveryServerApplication",
+      "projectName": "DiscoveryServer",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-ProductServiceApplication<ProductService>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.billionairestore.productservice.ProductServiceApplication",
+      "projectName": "ProductService",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}

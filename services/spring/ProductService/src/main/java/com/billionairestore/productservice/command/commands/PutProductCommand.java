@@ -6,7 +6,7 @@ import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
 @Data
 @Builder
-public class CreateProductCommand {
+public class PutProductCommand {
     @TargetAggregateIdentifier
     private final String aggregateId;
     private final String productId;
@@ -15,4 +15,5 @@ public class CreateProductCommand {
     private final String category;
     private final Double buyPrice;
     private final Double sellPrice;
+
 }
