@@ -18,6 +18,11 @@ const noAuthModule: RouteModule = {
       name: 'managerEmployee',
       component: () => import('@/views/noauth/ManageEmployeeView.vue'),
     },
+    {
+      path: '/shelf',
+      name: 'employeeShelf',
+      component: () => import('@/views/noauth/ManageShelfView.vue'),
+    },
   ],
 }
 

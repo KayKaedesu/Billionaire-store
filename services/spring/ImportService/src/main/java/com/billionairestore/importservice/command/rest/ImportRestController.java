@@ -37,7 +37,6 @@ public class ImportRestController {
             result = e.getLocalizedMessage();
         }
         return result;
-
     }
 
 }
