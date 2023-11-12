@@ -3,13 +3,11 @@ package com.billionairestore.productservice.command;
 import com.billionairestore.core.events.CreatedEvent;
 import com.billionairestore.productservice.core.data.ProductEntity;
 import com.billionairestore.productservice.core.data.ProductRepository;
-import com.billionairestore.productservice.core.events.ProductCreatedEvent;
 import com.billionairestore.productservice.core.events.ProductDeletedEvent;
 import com.billionairestore.productservice.core.events.ProductImageCreatedEvent;
-import com.billionairestore.productservice.core.events.ProductPutEvent;
+import com.billionairestore.core.events.ProductPutEvent;
 import org.axonframework.eventhandling.EventHandler;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component

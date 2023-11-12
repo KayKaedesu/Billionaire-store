@@ -1,6 +1,7 @@
 package com.billionairestore.importservice.command;
 
 import com.billionairestore.core.events.CreatedEvent;
+import com.billionairestore.core.events.ProductPutEvent;
 import com.billionairestore.importservice.core.data.ImportEntity;
 import com.billionairestore.importservice.core.data.ImportRepository;
 import com.billionairestore.importservice.core.events.ImportCreatedEvent;
@@ -25,6 +26,19 @@ public class ImportEventsHandler {
         importEntity.setCategory(event.getCategory());
         importEntity.setBuyPrice(event.getSellPrice()*0.8);
         importRepository.save(importEntity);
+    }
+
+    @EventHandler
+    public void on(ProductPutEvent event){
+        ImportEntity entity = importRepository.findByProductId(event.getProductId());
+        if (entity == null) {
+            throw new IllegalStateException("Entity with id " + event.getProductId() + " not found");
+        }
+        BeanUtils.copyProperties(event, entity);
+        entity.setName(event.getName());
+        entity.setCategory(event.getCategory());
+        entity.setBuyPrice(event.getSellPrice()*0.8);
+        importRepository.save(entity);
     }
 
 
