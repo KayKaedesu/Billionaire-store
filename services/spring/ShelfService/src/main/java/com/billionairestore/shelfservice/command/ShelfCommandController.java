@@ -1,11 +1,7 @@
 package com.billionairestore.shelfservice.command;
 
-import com.billionairestore.shelfservice.command.commands.CreateShelfCommand;
-import com.billionairestore.shelfservice.command.commands.DeleteShelfCommand;
-import com.billionairestore.shelfservice.command.commands.UpdateShelfCommand;
-import com.billionairestore.shelfservice.command.rest.CreateShelfRestModel;
-import com.billionairestore.shelfservice.command.rest.DeleteShelfRestModel;
-import com.billionairestore.shelfservice.command.rest.UpdateShelfRestModel;
+import com.billionairestore.shelfservice.command.commands.*;
+import com.billionairestore.shelfservice.command.rest.*;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -26,10 +22,9 @@ public class ShelfCommandController {
 
 
     @RequestMapping(value =  "/shelf",method = RequestMethod.POST)
-    public String addShelf(@RequestBody CreateShelfRestModel model){
+    public String createShelf(@RequestBody CreateShelfRestModel model){
         CreateShelfCommand command = CreateShelfCommand.builder()
                 .aggregateId(UUID.randomUUID().toString())
-//                .shelfId(UUID.randomUUID().toString())
                 .productId(model.getProductId())
                 .quantity(0)
                 .build();
@@ -47,7 +42,6 @@ public class ShelfCommandController {
     public String deleteShelf(@RequestBody DeleteShelfRestModel model){
         DeleteShelfCommand command = DeleteShelfCommand.builder()
                 .aggregateId(UUID.randomUUID().toString())
-//                .shelfId(model.getShelfId())
                 .productId(model.getProductId())
                 .quantity(model.getQuantity())
                 .build();
@@ -65,7 +59,6 @@ public class ShelfCommandController {
     public String putShelf(@RequestBody UpdateShelfRestModel model){
         UpdateShelfCommand command = UpdateShelfCommand.builder()
                 .aggregateId(UUID.randomUUID().toString())
-//                .shelfId(model.getShelfId())
                 .productId(model.getProductId())
                 .quantity(model.getQuantity())
                 .build();
@@ -74,6 +67,38 @@ public class ShelfCommandController {
             result = commandGateway.sendAndWait(command);
         }
         catch (Exception e){
+            result = e.getLocalizedMessage();
+        }
+        return result;
+    }
+
+    @RequestMapping(value = "/toShelf", method = RequestMethod.POST)
+    public String addShelf(@RequestBody InventoryToShelfRestModel model) {
+        InventoryToShelfCommand command = InventoryToShelfCommand.builder()
+                .aggregateId(UUID.randomUUID().toString())
+                .productId(model.getProductId())
+                .quantity(model.getQuantity())
+                .build();
+        String result;
+        try{
+            result = commandGateway.sendAndWait(command);
+        } catch (Exception e){
+            result = e.getLocalizedMessage();
+        }
+        return result;
+    }
+
+    @RequestMapping(value = "/toInventory", method = RequestMethod.POST)
+    public String addShelf(@RequestBody ShelfToInventoryRestModel model) {
+        ShelfToInventoryCommand command = ShelfToInventoryCommand.builder()
+                .aggregateId(UUID.randomUUID().toString())
+                .productId(model.getProductId())
+                .quantity(model.getQuantity())
+                .build();
+        String result;
+        try{
+            result = commandGateway.sendAndWait(command);
+        } catch (Exception e){
             result = e.getLocalizedMessage();
         }
         return result;
