@@ -9,5 +9,5 @@ public class BuyProductRestModel {
     private String name;
     private String category;
     private Double buyPrice;
-    private Double quantity;
+    private int quantity;
 }
