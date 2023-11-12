@@ -17,7 +17,9 @@
         <template #header>
           <n-text strong depth="1">สวัสดี {NAME}</n-text>
         </template>
-        <template #footer> a </template>
+        <template #footer>
+          <n-button quaternary style="width: 100px" @click="navigateToLogin"> Logout </n-button>
+        </template>
       </n-popover>
     </NLayoutHeader>
     <n-layout has-sider>
@@ -43,7 +45,6 @@
         }"
       >
         <router-view />
-        asdsad
       </NLayoutContent>
     </n-layout>
     <NLayoutFooter :inverted="inverted" bordered>
@@ -65,7 +66,7 @@ import {
 } from 'naive-ui'
 import { Icon, type IconifyIconProps } from '@iconify/vue'
 import type { MenuMixedOption } from 'naive-ui/es/menu/src/interface'
-import { RouterLink } from 'vue-router'
+import {RouterLink, useRouter} from 'vue-router'
 
 
 function renderIcon(iconProps: IconifyIconProps) {
@@ -148,9 +149,15 @@ export default defineComponent({
     NLayoutContent,
   },
   setup() {
+    const router = useRouter();
+    const navigateToLogin = () => {
+      router.push('/manager/login'); // Navigate to the specified route
+    }
+
     return {
       inverted: ref(true),
       menuOptions,
+      navigateToLogin
     }
   },
 })
