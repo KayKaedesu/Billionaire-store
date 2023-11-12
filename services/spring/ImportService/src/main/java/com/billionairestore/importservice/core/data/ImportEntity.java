@@ -18,9 +18,6 @@ public class ImportEntity implements Serializable {
 
     @Id
     @Column(unique = true)
-    private String importId;
-
-    @Column(unique = true)
     private String productId;
 
     @Column(unique = true)

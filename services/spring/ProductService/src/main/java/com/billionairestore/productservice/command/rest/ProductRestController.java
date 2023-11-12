@@ -20,10 +20,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/products")
 public class ProductRestController {
-
     CommandGateway commandGateway;
-
-
 
     @Autowired
     public ProductRestController(CommandGateway commandGateway) {

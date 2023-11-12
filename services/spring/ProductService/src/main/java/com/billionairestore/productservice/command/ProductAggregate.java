@@ -1,5 +1,7 @@
 package com.billionairestore.productservice.command;
 
+
+import com.billionairestore.core.events.CreatedEvent;
 import com.billionairestore.productservice.command.commands.CreateProductCommand;
 import com.billionairestore.productservice.command.commands.DeleteProductCommand;
 import com.billionairestore.productservice.command.commands.PutProductCommand;
@@ -13,6 +15,8 @@ import org.axonframework.modelling.command.AggregateLifecycle;
 import org.axonframework.spring.stereotype.Aggregate;
 import org.springframework.beans.BeanUtils;
 
+import java.util.UUID;
+
 @Aggregate
 public class ProductAggregate {
     @AggregateIdentifier
@@ -24,17 +28,20 @@ public class ProductAggregate {
     private Double buyPrice;
     private Double sellPrice;
 
-    @CommandHandler
     public ProductAggregate() {
     }
 
     @CommandHandler
     public ProductAggregate(CreateProductCommand createProductCommand) {
-        ProductCreatedEvent event = new ProductCreatedEvent();
-        BeanUtils.copyProperties(createProductCommand, event);
+        CreatedEvent event =  CreatedEvent.builder()
+                .aggregateId(createProductCommand.getAggregateId())
+                .name(createProductCommand.getName())
+                .category(createProductCommand.getCategory())
+                .sellPrice(createProductCommand.getSellPrice())
+                .productId(createProductCommand.getProductId())
+                .build();
         AggregateLifecycle.apply(event);
     }
-
 
     @CommandHandler
     public ProductAggregate(DeleteProductCommand command) {
@@ -57,7 +64,7 @@ public class ProductAggregate {
         this.productId = event.getProductId();
     }
     @EventSourcingHandler
-    public void on(ProductCreatedEvent event) {
+    public void on(CreatedEvent event) {
         System.out.println("aggregating product");
         this.aggregateId = event.getAggregateId();
         this.productId = event.getProductId();

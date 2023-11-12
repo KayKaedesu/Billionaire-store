@@ -1,46 +1,65 @@
 package com.billionairestore.inventoryservice.command;
 
-import com.billionairestore.inventoryservice.command.commands.CreateProductInventoryCommand;
-import com.billionairestore.inventoryservice.command.commands.DeleteProductInventoryCommand;
-import com.billionairestore.inventoryservice.core.events.InventoryProductCreatedEvent;
-import com.billionairestore.inventoryservice.core.events.InventoryProductDeletedEvent;
+import com.billionairestore.inventoryservice.command.commands.CreateInventoryCommand;
+import com.billionairestore.inventoryservice.command.commands.DeleteInventoryCommand;
+import com.billionairestore.inventoryservice.core.events.InventoryCreatedEvent;
+import com.billionairestore.inventoryservice.core.events.InventoryDeletedEvent;
 import com.billionairestore.productservice.command.commands.CreateProductCommand;
-import com.billionairestore.productservice.core.events.ProductCreatedEvent;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
 import org.axonframework.modelling.command.AggregateLifecycle;
-import org.axonframework.modelling.command.TargetAggregateIdentifier;
 import org.axonframework.spring.stereotype.Aggregate;
 import org.springframework.beans.BeanUtils;
 
+import java.util.UUID;
+
 @Aggregate
 public class InventoryAggregate {
-    @TargetAggregateIdentifier
+    @AggregateIdentifier
+    private String aggregateId;
     private String productId;
+    private int quantity;
 
-    @CommandHandler
-    public InventoryAggregate(CreateProductInventoryCommand command) {
-        InventoryProductCreatedEvent event = new InventoryProductCreatedEvent();
-        BeanUtils.copyProperties(command, event);
-        AggregateLifecycle.apply(event);
-    }
-
-    @EventSourcingHandler
-    public void on(InventoryProductCreatedEvent event) {
-        this.productId = event.getProductId();
-    }
+    public InventoryAggregate(){}
 
 
     @CommandHandler
-    public InventoryAggregate(DeleteProductInventoryCommand command) {
-        InventoryProductDeletedEvent event = new InventoryProductDeletedEvent(command.getProductId());
-        AggregateLifecycle.apply(event);
+    public InventoryAggregate(CreateInventoryCommand createInventoryCommand){
+        if (createInventoryCommand.getProductId().isBlank()){
+            throw new IllegalArgumentException("กรอกให้ครบ");
+        }
+        InventoryCreatedEvent inventoryCreatedEvent = new InventoryCreatedEvent();
+        BeanUtils.copyProperties(createInventoryCommand, inventoryCreatedEvent);
+        AggregateLifecycle.apply(inventoryCreatedEvent);
+    }
+
+    @CommandHandler
+    public InventoryAggregate(DeleteInventoryCommand deleteInventoryCommand){
+        if (deleteInventoryCommand.getProductId().isBlank()){
+            throw new IllegalArgumentException("err");
+        }
+        InventoryDeletedEvent inventoryDeletedEvent = new InventoryDeletedEvent();
+        BeanUtils.copyProperties(deleteInventoryCommand, inventoryDeletedEvent);
+        AggregateLifecycle.apply(inventoryDeletedEvent);
+    }
+
+
+
+    @EventSourcingHandler
+    public void on(InventoryCreatedEvent inventoryCreatedEvent) {
+        System.out.println("ON AGGREGATE " + inventoryCreatedEvent);
+        this.aggregateId = inventoryCreatedEvent.getAggregateId();
+        this.productId = inventoryCreatedEvent.getProductId();
+        this.quantity = inventoryCreatedEvent.getQuantity();
     }
 
     @EventSourcingHandler
-    public void on(InventoryProductDeletedEvent event) {
-        this.productId = event.getProductId();
+    public void on(InventoryDeletedEvent inventoryDeletedEvent) {
+        System.out.println("ON AGGREGATE " + inventoryDeletedEvent);
+        this.aggregateId = inventoryDeletedEvent.getAggregateId();
+        this.productId = inventoryDeletedEvent.getProductId();
+        this.quantity = inventoryDeletedEvent.getQuantity();
     }
 
 }
