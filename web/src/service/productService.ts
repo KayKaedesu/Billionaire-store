@@ -65,7 +65,6 @@ export function getConfigs(
     method,
     url,
   }
-
   if (!localStorage.getItem('token')) {
     console.error('no auth')
     throw new Error('no auth')
