@@ -1,4 +1,4 @@
-package com.billionairestore.productservice.core.events;
+package com.billionairestore.core.events;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -6,16 +6,13 @@ import com.billionairestore.productservice.command.commands.CreateProductCommand
 import com.billionairestore.productservice.command.commands.DeleteProductCommand;
 import com.billionairestore.productservice.command.commands.PutProductCommand;
 import com.billionairestore.productservice.core.events.ProductDeletedEvent;
-import com.billionairestore.productservice.core.events.ProductCreatedEvent;
-import com.billionairestore.productservice.core.events.ProductPutEvent;
+import com.billionairestore.core.events.ProductPutEvent;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
 import org.axonframework.modelling.command.AggregateLifecycle;
 import org.axonframework.spring.stereotype.Aggregate;
 import org.springframework.beans.BeanUtils;
-
-import java.util.UUID;
 
 @Aggregate
 public class ProductAggregate {
