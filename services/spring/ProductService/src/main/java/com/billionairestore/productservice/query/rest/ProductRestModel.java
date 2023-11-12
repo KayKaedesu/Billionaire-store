@@ -5,5 +5,8 @@ import lombok.Data;
 @Data
 public class ProductRestModel {
     private String productId;
-    private int quantity;
+    private String name;
+    private String category;
+    private Double sellPrice;
+    private String imageUrl;
 }

@@ -15,7 +15,7 @@ public class ProductQueryController {
         this.queryGateway = queryGateway;
     }
     @RequestMapping(value =  "/products",method = RequestMethod.GET)
-    public List<ProductRestModel> getShelf(){
+    public List<ProductRestModel> getProduct(){
         FindProductQuery findProductQuery = new FindProductQuery();
         return queryGateway.query(
                 findProductQuery, ResponseTypes.multipleInstancesOf(ProductRestModel.class)

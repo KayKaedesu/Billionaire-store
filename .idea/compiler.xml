@@ -39,6 +39,7 @@
       <module name="POSService" options="-parameters" />
       <module name="PaymentService" options="-parameters" />
       <module name="ProductService" options="-parameters" />
+      <module name="ReportService" options="-parameters" />
       <module name="ShelfService" options="-parameters" />
       <module name="UserService" options="-parameters" />
       <module name="UserService (2)" options="-parameters" />

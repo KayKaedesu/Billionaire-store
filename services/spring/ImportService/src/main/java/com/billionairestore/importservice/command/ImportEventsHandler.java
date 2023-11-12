@@ -25,7 +25,6 @@ public class ImportEventsHandler {
         importEntity.setCategory(event.getCategory());
         importEntity.setBuyPrice(event.getSellPrice()*0.8);
         importRepository.save(importEntity);
-
     }
 
 
