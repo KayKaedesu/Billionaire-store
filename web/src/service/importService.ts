@@ -5,7 +5,7 @@
 /** Generate by swagger-axios-codegen */
 /* eslint-disable */
 // @ts-nocheck
-import axiosStatic, { AxiosInstance, AxiosRequestConfig } from 'axios';
+import axiosStatic,{ type AxiosInstance, type AxiosRequestConfig } from 'axios';
 
 export interface IRequestOptions extends AxiosRequestConfig {
   /** only in axios interceptor config*/

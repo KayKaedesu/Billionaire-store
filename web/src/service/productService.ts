@@ -5,66 +5,57 @@
 /** Generate by swagger-axios-codegen */
 /* eslint-disable */
 // @ts-nocheck
-import axiosStatic, { AxiosInstance, AxiosRequestConfig } from 'axios'
+import axiosStatic,{ type AxiosInstance, type AxiosRequestConfig } from 'axios';
 
 export interface IRequestOptions extends AxiosRequestConfig {
   /** only in axios interceptor config*/
-  loading?: boolean
-  showError?: boolean
+  loading?: boolean;
+  showError?: boolean;
 }
 
 export interface IRequestConfig {
-  method?: any
-  headers?: any
-  url?: any
-  data?: any
-  params?: any
+  method?: any;
+  headers?: any;
+  url?: any;
+  data?: any;
+  params?: any;
 }
 
 // Add options interface
 export interface ServiceOptions {
-  axios?: AxiosInstance
+  axios?: AxiosInstance;
   /** only in axios interceptor config*/
-  loading: boolean
-  showError: boolean
+  loading: boolean;
+  showError: boolean;
 }
 
 // Add default options
-export const serviceOptions: ServiceOptions = {}
+export const serviceOptions: ServiceOptions = {};
 
 // Instance selector
-export function axios(
-  configs: IRequestConfig,
-  resolve: (p: any) => void,
-  reject: (p: any) => void
-): Promise<any> {
+export function axios(configs: IRequestConfig, resolve: (p: any) => void, reject: (p: any) => void): Promise<any> {
   if (serviceOptions.axios) {
     return serviceOptions.axios
       .request(configs)
-      .then((res) => {
-        resolve(res.data)
+      .then(res => {
+        resolve(res.data);
       })
-      .catch((err) => {
-        reject(err)
-      })
+      .catch(err => {
+        reject(err);
+      });
   } else {
-    throw new Error('please inject yourself instance like axios  ')
+    throw new Error('please inject yourself instance like axios  ');
   }
 }
 
-export function getConfigs(
-  method: string,
-  contentType: string,
-  url: string,
-  options: any
-): IRequestConfig {
+export function getConfigs(method: string, contentType: string, url: string, options: any): IRequestConfig {
   const configs: IRequestConfig = {
     loading: serviceOptions.loading,
     showError: serviceOptions.showError,
     ...options,
     method,
-    url,
-  }
+    url
+  };
   if (!localStorage.getItem('token')) {
     console.error('no auth')
     throw new Error('no auth')
@@ -77,31 +68,31 @@ export function getConfigs(
   return configs
 }
 
-export const basePath = 'http://localhost:8080/product-service'
+export const basePath = 'http://localhost:8080/product-service';
 
 export interface IList<T> extends Array<T> {}
 export interface List<T> extends Array<T> {}
 export interface IDictionary<TValue> {
-  [key: string]: TValue
+  [key: string]: TValue;
 }
 export interface Dictionary<TValue> extends IDictionary<TValue> {}
 
 export interface IListResult<T> {
-  items?: T[]
+  items?: T[];
 }
 
 export class ListResultDto<T> implements IListResult<T> {
-  items?: T[]
+  items?: T[];
 }
 
 export interface IPagedResult<T> extends IListResult<T> {
-  totalCount?: number
-  items?: T[]
+  totalCount?: number;
+  items?: T[];
 }
 
 export class PagedResultDto<T = any> implements IPagedResult<T> {
-  totalCount?: number
-  items?: T[]
+  totalCount?: number;
+  items?: T[];
 }
 
 // customer definition
@@ -113,19 +104,14 @@ export class ProductQueryControllerService {
    */
   static getProduct(options: IRequestOptions = {}): Promise<any> {
     return new Promise((resolve, reject) => {
-      let url = basePath + '/products'
+      let url = basePath + '/products';
 
-      const configs: IRequestConfig = getConfigs(
-        'get',
-        'application/json',
-        url,
-        options
-      )
+      const configs: IRequestConfig = getConfigs('get', 'application/json', url, options);
 
       /** 适配ios13，get请求不允许带body */
 
-      axios(configs, resolve, reject)
-    })
+      axios(configs, resolve, reject);
+    });
   }
 }
 
@@ -136,26 +122,21 @@ export class ProductRestControllerService {
   static putProduct(
     params: {
       /** requestBody */
-      body?: PutProductRestModel
+      body?: PutProductRestModel;
     } = {} as any,
     options: IRequestOptions = {}
   ): Promise<any> {
     return new Promise((resolve, reject) => {
-      let url = basePath + '/products'
+      let url = basePath + '/products';
 
-      const configs: IRequestConfig = getConfigs(
-        'put',
-        'application/json',
-        url,
-        options
-      )
+      const configs: IRequestConfig = getConfigs('put', 'application/json', url, options);
 
-      let data = params.body
+      let data = params.body;
 
-      configs.data = data
+      configs.data = data;
 
-      axios(configs, resolve, reject)
-    })
+      axios(configs, resolve, reject);
+    });
   }
   /**
    *
@@ -163,26 +144,21 @@ export class ProductRestControllerService {
   static createProduct(
     params: {
       /** requestBody */
-      body?: CreateProductRestModel
+      body?: CreateProductRestModel;
     } = {} as any,
     options: IRequestOptions = {}
   ): Promise<any> {
     return new Promise((resolve, reject) => {
-      let url = basePath + '/products'
+      let url = basePath + '/products';
 
-      const configs: IRequestConfig = getConfigs(
-        'post',
-        'application/json',
-        url,
-        options
-      )
+      const configs: IRequestConfig = getConfigs('post', 'application/json', url, options);
 
-      let data = params.body
+      let data = params.body;
 
-      configs.data = data
+      configs.data = data;
 
-      axios(configs, resolve, reject)
-    })
+      axios(configs, resolve, reject);
+    });
   }
   /**
    *
@@ -190,26 +166,21 @@ export class ProductRestControllerService {
   static deleteProduct(
     params: {
       /** requestBody */
-      body?: DeleteProductRestModel
+      body?: DeleteProductRestModel;
     } = {} as any,
     options: IRequestOptions = {}
   ): Promise<any> {
     return new Promise((resolve, reject) => {
-      let url = basePath + '/products'
+      let url = basePath + '/products';
 
-      const configs: IRequestConfig = getConfigs(
-        'delete',
-        'application/json',
-        url,
-        options
-      )
+      const configs: IRequestConfig = getConfigs('delete', 'application/json', url, options);
 
-      let data = params.body
+      let data = params.body;
 
-      configs.data = data
+      configs.data = data;
 
-      axios(configs, resolve, reject)
-    })
+      axios(configs, resolve, reject);
+    });
   }
   /**
    *
@@ -217,71 +188,75 @@ export class ProductRestControllerService {
   static imageUpload(
     params: {
       /** requestBody */
-      body?: CreateProductImageRestModel
+      body?: CreateProductImageRestModel;
     } = {} as any,
     options: IRequestOptions = {}
   ): Promise<any> {
     return new Promise((resolve, reject) => {
-      let url = basePath + '/products/image'
+      let url = basePath + '/products/image';
 
-      const configs: IRequestConfig = getConfigs(
-        'post',
-        'application/json',
-        url,
-        options
-      )
+      const configs: IRequestConfig = getConfigs('post', 'application/json', url, options);
 
-      let data = params.body
+      let data = params.body;
 
-      configs.data = data
+      configs.data = data;
 
-      axios(configs, resolve, reject)
-    })
+      axios(configs, resolve, reject);
+    });
   }
 }
 
 export interface PutProductRestModel {
   /**  */
-  productId?: string
+  productId?: string;
 
   /**  */
-  name?: string
+  name?: string;
 
   /**  */
-  category?: string
+  category?: string;
 
   /**  */
-  sellPrice?: number
+  sellPrice?: number;
 }
 
 export interface CreateProductRestModel {
   /**  */
-  name?: string
+  name?: string;
 
   /**  */
-  category?: string
+  category?: string;
 
   /**  */
-  sellPrice?: number
+  sellPrice?: number;
 }
 
 export interface CreateProductImageRestModel {
   /**  */
-  productId?: string
+  productId?: string;
 
   /**  */
-  file?: string
+  file?: string;
 }
 
 export interface ProductRestModel {
   /**  */
-  productId?: string
+  productId?: string;
 
   /**  */
-  quantity?: number
+  name?: string;
+
+  /**  */
+  category?: string;
+
+  /**  */
+  sellPrice?: number;
+
+  /**  */
+  imageUrl?: string;
 }
 
 export interface DeleteProductRestModel {
   /**  */
-  productId?: string
+  productId?: string;
 }
