@@ -8,13 +8,16 @@
       <!-- avatar -->
       <n-popover trigger="click">
         <template #trigger>
+
           <n-avatar>
             <n-icon>
               <md-cash />
             </n-icon>
           </n-avatar>
+
         </template>
         <template #header>
+
           <n-text strong depth="1">สวัสดี {NAME}</n-text>
         </template>
         <template #footer>
@@ -22,7 +25,7 @@
         </template>
       </n-popover>
     </NLayoutHeader>
-    <n-layout has-sider>
+    <n-layout has-sider >
       <NLayoutSider
         bordered
         show-trigger
@@ -48,7 +51,7 @@
       </NLayoutContent>
     </n-layout>
     <NLayoutFooter :inverted="inverted" bordered>
-      Footer Footer Footer
+Billionaire Store
     </NLayoutFooter>
   </NLayout>
 </template>

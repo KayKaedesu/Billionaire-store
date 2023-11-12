@@ -124,15 +124,15 @@
                 maxlength="50"
                 placeholder="ระบุชื่อชื่อพนักงาน"
             ></n-input>
+
             <n-input
                 style="border-radius: 25px; margin-bottom: 10px"
                 clearable
-                maxlength="10"
-                placeholder="ระบุรหัสพนักงาน"
+                placeholder="ระบุอีเมล"
             ></n-input>
             <n-select
-                default-value="ระบุุตำแหน่ง"
-                :options="[
+              default-value="ระบุุตำแหน่ง"
+              :options="[
                   {
                     label: 'แคชเชียร์',
                     value: '1',
@@ -142,12 +142,7 @@
                     value: '2',
                   },
                 ]"
-            />
-            <n-input
-                style="border-radius: 25px; margin-bottom: 10px"
-                clearable
-                placeholder="ระบุอีเมล"
-            ></n-input>
+          />
             <n-space style="margin-top: 30px; margin-left: 25%">
               <n-button
                   round
@@ -239,8 +234,8 @@
                   <n-input
                       style="border-radius: 25px; margin-bottom: 10px"
                       clearable
-                      maxlength="10"
-                      placeholder="ระบุรหัสสินค้า"
+                      maxlength="50"
+                      placeholder="ระบุประเภทสินค้า"
                   ></n-input>
                   <n-input
                       style="border-radius: 25px; margin-bottom: 10px"
@@ -249,13 +244,6 @@
                       placeholder="ระบุราคา"
                   ><template #suffix>
                     บาท
-                  </template></n-input>
-                  <n-input
-                      style="border-radius: 25px; margin-bottom: 10px"
-                      clearable
-                      placeholder="ระบุจำนวน"
-                  ><template #suffix>
-                    หน่วย
                   </template></n-input>
                   <n-button
                       round
@@ -298,8 +286,8 @@
             <n-input
                 style="border-radius: 25px; margin-bottom: 10px"
                 clearable
-                maxlength="10"
-                placeholder="ระบุรหัสสินค้า"
+                maxlength="50"
+                placeholder="ระบุประเภทสินค้า"
             ></n-input>
             <n-input
                 style="border-radius: 25px; margin-bottom: 10px"
@@ -308,13 +296,6 @@
                 placeholder="ระบุราคา"
             ><template #suffix>
               บาท
-            </template></n-input>
-            <n-input
-                style="border-radius: 25px; margin-bottom: 10px"
-                clearable
-                placeholder="ระบุจำนวน"
-            ><template #suffix>
-              หน่วย
             </template></n-input>
             <n-space style="margin-top: 30px; margin-left: 25%">
               <n-button
@@ -546,6 +527,12 @@ export default defineComponent({
         sorter: (row1: any, row2: any) => row1.id - row2.id,
       },
       {
+        title: 'ประเภทสินค้า',
+        key: 'category',
+        width: '150',
+        align: 'center',
+      },
+      {
         title: 'ราคา',
         key: 'price',
         width: '200px',
@@ -606,6 +593,7 @@ export default defineComponent({
       order: `${index + 1}`,
       name: `ฮาตาริ`,
       id: Math.floor(Math.random() * 1000),
+      category: 'เครื่องใช้ไฟฟ้า',
       price: 200,
       quantity: Math.floor(Math.random() * 100),
     }))
