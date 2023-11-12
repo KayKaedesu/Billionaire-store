@@ -9,6 +9,7 @@ import lombok.Data;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import java.util.Date;
 
 @Entity
@@ -26,5 +27,5 @@ public class ImportReportEntity implements Serializable {
     private double quantity;
     private String category;
     private double buyPrice;
-    private LocalDate createdAt;
+    private OffsetDateTime createdAt;
 }

@@ -2,6 +2,7 @@ package com.billionairestore.logservice.query.rest;
 
 import lombok.Data;
 
+import java.time.OffsetDateTime;
 import java.util.Date;
 
 @Data
@@ -12,5 +13,5 @@ public class ImportLogRestModel {
     private String name;
     private int quantity;
     private double buyPrice;
-    private Date createdAt;
+    private OffsetDateTime createdAt;
 }

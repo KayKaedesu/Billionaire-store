@@ -8,12 +8,12 @@ import lombok.Data;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.util.Date;
+import java.time.OffsetDateTime;
 
 @Entity
 @Table(name = "poslog")
 @Data
-public class POSLogEntity implements Serializable {
+public class POSReportEntity implements Serializable {
     @Serial
     private static final long serialVersionUID = 1215380801452571168L;
     @Id
@@ -24,5 +24,5 @@ public class POSLogEntity implements Serializable {
     private String name;
     private int quantity;
     private double sellPrice;
-    private Date createdAt;
+    private OffsetDateTime createdAt;
 }

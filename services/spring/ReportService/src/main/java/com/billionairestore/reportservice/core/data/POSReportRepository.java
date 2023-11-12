@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Date;
 import java.util.List;
 
-public interface POSLogRepository extends JpaRepository<POSLogEntity, Long> {
-    List<POSLogEntity> findByCreatedAtBetween(Date startDate, Date endDate);
+public interface POSReportRepository extends JpaRepository<POSReportEntity, Long> {
+    List<POSReportEntity> findByCreatedAtBetween(Date startDate, Date endDate);
 }

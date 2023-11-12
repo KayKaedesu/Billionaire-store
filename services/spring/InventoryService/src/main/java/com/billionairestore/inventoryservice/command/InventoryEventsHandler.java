@@ -42,5 +42,4 @@ public class InventoryEventsHandler {
         BeanUtils.copyProperties(event, inventoryEntity);
         inventoryRepository.delete(inventoryEntity);
     }
-
 }
