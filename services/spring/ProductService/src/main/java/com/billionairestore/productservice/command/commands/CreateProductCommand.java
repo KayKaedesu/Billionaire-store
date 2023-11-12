@@ -8,6 +8,7 @@ import org.axonframework.modelling.command.TargetAggregateIdentifier;
 @Builder
 public class CreateProductCommand {
     @TargetAggregateIdentifier
+    private final String aggregateId;
     private final String productId;
     private final String name;
     private final String imageUrl;

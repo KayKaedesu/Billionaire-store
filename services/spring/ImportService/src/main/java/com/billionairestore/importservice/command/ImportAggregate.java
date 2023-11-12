@@ -12,7 +12,6 @@ import org.springframework.beans.BeanUtils;
 @Aggregate
 public class ImportAggregate {
     @AggregateIdentifier
-    private String importId;
     private String productId;
     private String name;
     private String category;
@@ -31,7 +30,6 @@ public class ImportAggregate {
     @EventSourcingHandler
     public void on(ImportCreatedEvent event) {
         System.out.println("aggregating import");
-        this.importId = event.getImportId();
         this.productId = event.getProductId();
         this.name = event.getName();
         this.category = event.getCategory();

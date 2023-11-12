@@ -3,10 +3,13 @@ package com.billionairestore.inventoryservice.command.commands;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
+@Builder
 @Data
-@AllArgsConstructor
 public class ReduceInventoryCommand {
-    private String productId;
-    private int quantity;
+    @TargetAggregateIdentifier
+    private final String aggregateId;
+    private final String productId;
+    private final int quantity;
 }

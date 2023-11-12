@@ -1,8 +1,8 @@
 package com.billionairestore.userservice.command;
 
-import com.billionairestore.userservice.command.create.CreateUserCommand;
-import com.billionairestore.userservice.command.create.DeleteUserCommand;
-import com.billionairestore.userservice.command.create.UpdateUserCommand;
+import com.billionairestore.userservice.command.commands.CreateUserCommand;
+import com.billionairestore.userservice.command.commands.DeleteUserCommand;
+import com.billionairestore.userservice.command.commands.UpdateUserCommand;
 import com.billionairestore.userservice.core.events.UserCreatedEvent;
 import com.billionairestore.userservice.core.events.UserDeletedEvent;
 import com.billionairestore.userservice.core.events.UserUpdatedEvent;

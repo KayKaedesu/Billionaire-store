@@ -1,10 +1,12 @@
 package com.billionairestore.productservice.core.events;
 
-import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 public class ProductCreatedEvent {
+    private String aggregateId;
     private String productId;
     private String name;
     private String imageUrl;

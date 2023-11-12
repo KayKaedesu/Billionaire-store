@@ -1,8 +1,8 @@
 package com.billionairestore.shelfservice.command;
 
-import com.billionairestore.shelfservice.command.create.CreateShelfCommand;
-import com.billionairestore.shelfservice.command.create.DeleteShelfCommand;
-import com.billionairestore.shelfservice.command.create.UpdateShelfCommand;
+import com.billionairestore.shelfservice.command.commands.CreateShelfCommand;
+import com.billionairestore.shelfservice.command.commands.DeleteShelfCommand;
+import com.billionairestore.shelfservice.command.commands.UpdateShelfCommand;
 import com.billionairestore.shelfservice.core.events.ShelfCreatedEvent;
 import com.billionairestore.shelfservice.core.events.ShelfDeletedEvent;
 import com.billionairestore.shelfservice.core.events.ShelfUpdatedEvent;

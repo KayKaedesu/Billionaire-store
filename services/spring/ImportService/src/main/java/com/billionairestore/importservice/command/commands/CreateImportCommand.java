@@ -10,7 +10,6 @@ import org.axonframework.modelling.command.TargetAggregateIdentifier;
 @Builder
 public class CreateImportCommand {
     @TargetAggregateIdentifier
-    private final String importId;
     private final String productId;
     private final String name;
     private final String category;
