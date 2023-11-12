@@ -8,9 +8,15 @@ dependencies:
   '@vicons/ionicons5':
     specifier: ^0.12.0
     version: 0.12.0
+  axios:
+    specifier: ^1.6.1
+    version: 1.6.1
   chart.js:
     specifier: ^4.4.0
     version: 4.4.0
+  jwt-decode:
+    specifier: ^4.0.0
+    version: 4.0.0
   moment:
     specifier: ^2.29.4
     version: 2.29.4
@@ -948,8 +954,8 @@ packages:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
     dev: false
 
-  /axios@1.6.0:
-    resolution: {integrity: sha512-EZ1DYihju9pwVB+jg67ogm+Tmqc6JmhamRN6I4Zt8DfZu5lbcQGw3ozH9lFejSJgs/ibaef3A9PMXPLeefFGJg==}
+  /axios@1.6.1:
+    resolution: {integrity: sha512-vfBmhDpKafglh0EldBEbVuoe7DyAavGSLWhuSm5ZSEKQnHhBf0xAAwybbNH1IkrJNGnS/VG4I5yxig1pCEXE4g==}
     dependencies:
       follow-redirects: 1.15.3
       form-data: 4.0.0
@@ -1754,6 +1760,11 @@ packages:
     resolution: {integrity: sha512-Bdboy+l7tA3OGW6FjyFHWkP5LuByj1Tk33Ljyq0axyzdk9//JSi2u3fP1QSmd1KNwq6VOKYGlAu87CisVir6Pw==}
     dev: true
 
+  /jwt-decode@4.0.0:
+    resolution: {integrity: sha512-+KJGIyHgkGuIq3IEBNftfhW/LfWhXUIY6OmyVWjliu5KH1y0fw7VQ8YndE2O4qZdMSd9SqbnC8GOcZEy0Om7sA==}
+    engines: {node: '>=18'}
+    dev: false
+
   /keyv@4.5.4:
     resolution: {integrity: sha512-oxVHkHR/EJf2CNXnWxRLW6mg7JyCCUcG0DtEGmL2ctUo1PNTin1PUil+r/+4r5MpVgC/fn1kjsx7mjSujKqIpw==}
     dependencies:
@@ -2349,7 +2360,7 @@ packages:
   /swagger-axios-codegen@0.15.12:
     resolution: {integrity: sha512-VIm9ek12L4BuOcHNcJUYNP2W87E2Du5kMzlTHDIfFcnJVEdf2eZiTO6lQUJei2N3zubrH7jCEdkhXodl/OaC0g==}
     dependencies:
-      axios: 1.6.0
+      axios: 1.6.1
       camelcase: 5.3.1
       multimatch: 4.0.0
       pascalcase: 0.1.1
