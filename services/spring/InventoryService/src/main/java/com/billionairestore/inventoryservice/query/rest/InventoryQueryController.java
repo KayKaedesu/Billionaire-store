@@ -15,7 +15,7 @@ public class InventoryQueryController {
         this.queryGateway = queryGateway;
     }
     @RequestMapping(value =  "/inventory",method = RequestMethod.GET)
-    public List<InventoryRestModel> getShelf(){
+    public List<InventoryRestModel> getInventory(){
         FindInventoryQuery findInventoryQuery = new FindInventoryQuery();
         return queryGateway.query(
                 findInventoryQuery, ResponseTypes.multipleInstancesOf(InventoryRestModel.class)

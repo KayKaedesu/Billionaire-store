@@ -28,6 +28,7 @@
         <n-button round quaternary dashed @click="refreshPage"><n-icon :component="Refresh" size="25"
             :depth="1" /></n-button>
         <n-button round class="button" type="success" @click="showModal = true">เพิ่มสินค้าเข้าหน้าร้าน</n-button>
+        <n-button round class="button" type="success" @click="navigateToCashier">หน้าแคชเชียร์</n-button>
         <n-modal v-model:show="showModal" preset="dialog" title="Dialog">
           <template #header>
             <div>เพิ่มสินค้าเข้าหน้าร้าน</div>
@@ -64,6 +65,7 @@
 import { Refresh, SearchOutline } from '@vicons/ionicons5'
 import { defineComponent, ref } from 'vue'
 import router from "@/router";
+import {useRouter} from "vue-router";
 
 export default defineComponent({
   methods: {
@@ -146,9 +148,15 @@ export default defineComponent({
 
     const selectedInvenValue = ref(null);
 
+
+    const router = useRouter();
+    const navigateToCashier = () => {
+      router.push('/employee/cashier');
+    }
+
     const refreshPage = () => {
-      location.reload(); // Reloads the current page
-    };
+      location.reload();
+    }
 
     return {
       items,
@@ -157,7 +165,8 @@ export default defineComponent({
       Refresh,
       SearchOutline,
       showModal,
-      refreshPage
+      refreshPage,
+      navigateToCashier,
     }
   }
 })
