@@ -24,6 +24,7 @@
               style="margin-right: 20px"
           />
           <n-input
+              v-model="employeeSearch"
               style="
               border-radius: 25px;
               width: 90%;
@@ -52,6 +53,7 @@
           <template #action>
             <n-space vertical style="margin-right: 20px; width: 100%">
               <n-input
+                  v-model="employeeName"
                   style="border-radius: 25px; margin-bottom: 10px"
                   clearable
                   maxlength="50"
@@ -59,6 +61,7 @@
                   placeholder="ระบุชื่อพนักงาน"
               ></n-input>
               <n-input
+                  v-model="employeeId"
                   style="border-radius: 25px; margin-bottom: 10px"
                   clearable
                   maxlength="10"
@@ -66,6 +69,7 @@
                   placeholder="ระบุรหัสพนักงาน"
               ></n-input>
               <n-input
+                  v-model="employeeEmail"
                   style="border-radius: 25px; margin-bottom: 10px"
                   clearable
                   maxlength="50"
@@ -73,6 +77,7 @@
                   placeholder="ระบุอีเมล"
               ></n-input>
               <n-select
+                  v-model="employeeRole"
                   default-value="ระบุุตำแหน่ง"
                   :options="[
                   {
@@ -119,6 +124,7 @@
         <template #action>
           <n-space vertical style="margin-right: 20px; width: 100%">
             <n-input
+                v-model="employeeName"
                 style="border-radius: 25px; margin-bottom: 10px"
                 clearable
                 maxlength="50"
@@ -126,11 +132,13 @@
             ></n-input>
 
             <n-input
+                v-model="employeeEmail"
                 style="border-radius: 25px; margin-bottom: 10px"
                 clearable
                 placeholder="ระบุอีเมล"
             ></n-input>
             <n-select
+                v-model="employeeRole"
               default-value="ระบุุตำแหน่ง"
               :options="[
                   {
@@ -195,6 +203,7 @@
                 style="margin-right: 20px"
             />
             <n-input
+                v-model="productSearch"
                 style="
             border-radius: 25px;
             width: 90%;
@@ -226,18 +235,21 @@
               <template #action>
                 <n-space vertical style="margin-right: 20px; width: 100%">
                   <n-input
+                      v-model="productName"
                       style="border-radius: 25px; margin-bottom: 10px"
                       clearable
                       maxlength="50"
                       placeholder="ระบุชื่อสินค้า"
                   ></n-input>
                   <n-input
+                      v-model="productCategory"
                       style="border-radius: 25px; margin-bottom: 10px"
                       clearable
                       maxlength="50"
                       placeholder="ระบุประเภทสินค้า"
                   ></n-input>
                   <n-input
+                      v-model="productPrice"
                       style="border-radius: 25px; margin-bottom: 10px"
                       clearable
                       maxlength="10"
@@ -339,6 +351,7 @@ import { NButton, NModal } from 'naive-ui'
 import router from '@/router'
 import axios from 'axios'
 import {ProductQueryControllerService} from "@/service/productService";
+import employee from "@/router/modules/employee";
 
 // import { ProductRestControllerService } from '../../../service/productService'
 //
@@ -351,6 +364,11 @@ import {ProductQueryControllerService} from "@/service/productService";
 // })
 
 export default defineComponent({
+  computed: {
+    employee() {
+      return employee
+    }
+  },
   methods: {
     router() {
       return router
@@ -647,6 +665,17 @@ export default defineComponent({
       handleDeleteProductButton,
       handleConfirmProductDelete,
       refreshPage,
+
+      employeeSearch: '',
+      employeeName: '',
+      employeeId: '',
+      employeeEmail: '',
+      employeeRole: '',
+
+      productCategory: '',
+      productSearch: '',
+      productName: '',
+      productPrice: '',
     }
   },
 })
