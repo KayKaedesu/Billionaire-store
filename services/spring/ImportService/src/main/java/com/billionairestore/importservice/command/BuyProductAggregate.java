@@ -39,7 +39,6 @@ public class BuyProductAggregate {
                 .build();
         System.out.println("command buy");
         System.out.println(command.getQuantity());
-//        BeanUtils.copyProperties(command, event);
         AggregateLifecycle.apply(event);
     }
 

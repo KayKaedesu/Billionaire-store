@@ -19,13 +19,13 @@
         <module name="ImportService" />
         <module name="ProductService" />
         <module name="AuthService" />
-        <module name="PaymentService" />
         <module name="LogService" />
         <module name="Core" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="base" target="17" />
+      <module name="PaymentService" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
