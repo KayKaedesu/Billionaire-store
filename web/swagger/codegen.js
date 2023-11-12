@@ -15,14 +15,10 @@ const { codegen } = require('swagger-axios-codegen')
 
 
 codegen({
-  fileName: 'importService.ts',
-  remoteUrl: 'http://127.0.0.1:63705/v3/api-docs',
+  fileName: 'productService.ts',
+  remoteUrl: 'http://127.0.0.1:65522/v3/api-docs',
 })
 
-codegen({
-  fileName: 'inventoryService.ts',
-  remoteUrl: 'http://127.0.0.1:63804/v3/api-docs',
-})
 
 
 

@@ -102,7 +102,7 @@ export class InventoryQueryControllerService {
   /**
    *
    */
-  static getShelf(options: IRequestOptions = {}): Promise<any> {
+  static getInventory(options: IRequestOptions = {}): Promise<any> {
     return new Promise((resolve, reject) => {
       let url = basePath + '/inventory';
 

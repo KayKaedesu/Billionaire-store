@@ -111,7 +111,7 @@ export class ProductQueryControllerService {
   /**
    *
    */
-  static getShelf(options: IRequestOptions = {}): Promise<any> {
+  static getProduct(options: IRequestOptions = {}): Promise<any> {
     return new Promise((resolve, reject) => {
       let url = basePath + '/products'
 
