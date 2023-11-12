@@ -4,14 +4,14 @@ import lombok.Builder;
 import lombok.Data;
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
+import java.lang.reflect.Array;
+
 @Builder
 @Data
 public class CreatePOSCommand {
     @TargetAggregateIdentifier
     private final String aggregateId;
     private final String POSId;
-    private final String employeeId;
-    private final String productId;
-    private final String sellPrice;
-    private final String quantity;
+    private final String userId;
+    private final Array productList;
 }
