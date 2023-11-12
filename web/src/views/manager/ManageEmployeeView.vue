@@ -1,151 +1,149 @@
 <template>
   <n-tabs type="segment">
     <n-tab-pane name="employee" tab="รายชื่อพนักงาน">
-  <n-space vertical>
-    <n-space
-        vertical
-        :style="{
-        top: 0,
-        left: 0,
-        width: '100%',
-        zIndex: 0,
-        background: 'white',
-      }"
-    >
-      <n-input-group class="serch">
-        <n-icon
-            :component="SearchOutline"
-            size="35"
-            :depth="1"
-            style="margin-right: 20px"
+      <n-space vertical>
+        <n-space
+          vertical
+          :style="{
+            top: 0,
+            left: 0,
+            width: '100%',
+            zIndex: 0,
+            background: 'white',
+          }"
+        >
+          <n-input-group class="serch">
+            <n-icon
+              :component="SearchOutline"
+              size="35"
+              :depth="1"
+              style="margin-right: 20px"
+            />
+            <n-input
+              style="
+                border-radius: 25px;
+                width: 90%;
+                justify-content: center;
+                height: 35px;
+              "
+              clearable
+              maxlength="70"
+              placeholder="ค้นหารายชื่อพนักงาน, รหัสพนักงาน"
+            >
+            </n-input>
+          </n-input-group>
+        </n-space>
+
+        <n-space class="top-content">
+          <n-text class="text"> รายชื่อพนักงาน </n-text>
+          <n-space class="butt">
+            <n-button
+              round
+              class="button"
+              type="success"
+              @click="showModal = true"
+              >เพิ่มพนักงาน</n-button
+            >
+            <n-button round quaternary dashed @click="refreshPage"
+              ><n-icon :component="Refresh" size="25" :depth="1"
+            /></n-button>
+
+            <n-modal v-model:show="showModal" preset="dialog" title="Dialog">
+              <template #header>
+                <div>เพิ่มพนักงาน</div>
+              </template>
+              <template #action>
+                <n-space vertical style="margin-right: 20px; width: 100%">
+                  <n-input
+                    style="border-radius: 25px; margin-bottom: 10px"
+                    clearable
+                    maxlength="50"
+                    show-count
+                    placeholder="ระบุชื่อพนักงาน"
+                  ></n-input>
+                  <n-input
+                    style="border-radius: 25px; margin-bottom: 10px"
+                    clearable
+                    maxlength="10"
+                    show-count
+                    placeholder="ระบุรหัสพนักงาน"
+                  ></n-input>
+                  <n-input
+                    style="border-radius: 25px; margin-bottom: 10px"
+                    clearable
+                    maxlength="50"
+                    show-count
+                    placeholder="ระบุอีเมล"
+                  ></n-input>
+                  <n-select
+                    default-value="ระบุุตำแหน่ง"
+                    :options="[
+                      {
+                        label: 'แคชเชียร์',
+                        value: '1',
+                      },
+                      {
+                        label: 'จัดการสินค้าหน้าร้าน',
+                        value: '2',
+                      },
+                    ]"
+                  />
+                  <n-button
+                    round
+                    style="
+                      margin-left: 39%;
+                      margin-top: 25px;
+                      width: 110px;
+                      height: 35px;
+                    "
+                    type="success"
+                    @click="handleConfirmEdit"
+                    >ยืนยันการเพิ่ม</n-button
+                  >
+                </n-space>
+              </template>
+            </n-modal>
+          </n-space>
+        </n-space>
+
+        <n-data-table
+          ref="table"
+          :columns="columns"
+          :data="data"
+          :pagination="pagination"
         />
-        <n-input
-            style="
-            border-radius: 25px;
-            width: 90%;
-            justify-content: center;
-            height: 35px;
-          "
-            clearable
-            maxlength="70"
-            placeholder="ค้นหารายชื่อพนักงาน, รหัสพนักงาน"
-        >
-        </n-input>
-      </n-input-group>
-    </n-space>
-
-    <n-space class="top-content">
-      <n-text class="text"> รายชื่อพนักงาน </n-text>
-      <n-space class="butt">
-        <n-button round class="button" type="success" @click="showModal = true"
-        >เพิ่มพนักงาน</n-button
-        >
-        <n-button round quaternary dashed @click="refreshPage"
-        ><n-icon :component="Refresh" size="25" :depth="1"
-        /></n-button>
-
-        <n-modal v-model:show="showModal" preset="dialog" title="Dialog">
-          <template #header>
-            <div>เพิ่มพนักงาน</div>
-          </template>
-          <template #action>
-            <n-space vertical style="margin-right: 20px; width: 100%">
-              <n-input
-                  style="border-radius: 25px; margin-bottom: 10px"
-                  clearable
-                  maxlength="50"
-                  show-count
-                  placeholder="ระบุชื่อพนักงาน"
-              ></n-input>
-              <n-input
-                  style="border-radius: 25px; margin-bottom: 10px"
-                  clearable
-                  maxlength="10"
-                  show-count
-                  placeholder="ระบุรหัสพนักงาน"
-              ></n-input>
-              <n-input
-                  style="border-radius: 25px; margin-bottom: 10px"
-                  clearable
-                  maxlength="50"
-                  show-count
-                  placeholder="ระบุอีเมล"
-              ></n-input>
-              <n-select
-                  default-value="ระบุุตำแหน่ง"
-                  :options="[
-                  {
-                    label: 'แคชเชียร์',
-                    value: '1',
-                  },
-                  {
-                    label: 'จัดการสินค้าหน้าร้าน',
-                    value: '2',
-                  },
-                ]"
-              />
-              <n-button
-                  round
-                  style="
-                  margin-left: 39%;
-                  margin-top: 25px;
-                  width: 110px;
-                  height: 35px;
-                "
-                  type="success"
-                  @click="handleConfirmEdit"
-              >ยืนยันการเพิ่ม</n-button
-              >
-            </n-space>
-          </template>
-        </n-modal>
-
       </n-space>
-    </n-space>
-
-    <n-data-table
-        ref="table"
-        :columns="columns"
-        :data="data"
-        :pagination="pagination"
-    />
-  </n-space>
     </n-tab-pane>
-
-
-
-
-
 
     <n-tab-pane name="product" tab="รายชื่อสินค้า">
       <n-space vertical>
         <n-space
-            vertical
-            :style="{
-        top: 0,
-        left: 0,
-        width: '100%',
-        zIndex: 0,
-        background: 'white',
-      }"
+          vertical
+          :style="{
+            top: 0,
+            left: 0,
+            width: '100%',
+            zIndex: 0,
+            background: 'white',
+          }"
         >
           <n-input-group class="serch">
             <n-icon
-                :component="SearchOutline"
-                size="35"
-                :depth="1"
-                style="margin-right: 20px"
+              :component="SearchOutline"
+              size="35"
+              :depth="1"
+              style="margin-right: 20px"
             />
             <n-input
-                style="
-            border-radius: 25px;
-            width: 90%;
-            justify-content: center;
-            height: 35px;
-          "
-                clearable
-                maxlength="50"
-                placeholder="ค้นหาสินค้า, รหัสสินค้า"
+              style="
+                border-radius: 25px;
+                width: 90%;
+                justify-content: center;
+                height: 35px;
+              "
+              clearable
+              maxlength="50"
+              placeholder="ค้นหาสินค้า, รหัสสินค้า"
             >
             </n-input>
           </n-input-group>
@@ -154,11 +152,15 @@
         <n-space class="top-content">
           <n-text class="text"> รายการสินค้า </n-text>
           <n-space class="butt">
-            <n-button round class="button" type="success" @click="showModal = true"
-            >เพิ่มสินค้า</n-button
+            <n-button
+              round
+              class="button"
+              type="success"
+              @click="showModal = true"
+              >เพิ่มสินค้า</n-button
             >
             <n-button round quaternary dashed @click="refreshPage"
-            ><n-icon :component="Refresh" size="25" :depth="1"
+              ><n-icon :component="Refresh" size="25" :depth="1"
             /></n-button>
 
             <n-modal v-model:show="showModal" preset="dialog" title="Dialog">
@@ -168,43 +170,41 @@
               <template #action>
                 <n-space vertical style="margin-right: 20px; width: 100%">
                   <n-input
-                      style="border-radius: 25px; margin-bottom: 10px"
-                      clearable
-                      maxlength="50"
-                      placeholder="ระบุชื่อสินค้า"
+                    style="border-radius: 25px; margin-bottom: 10px"
+                    clearable
+                    maxlength="50"
+                    placeholder="ระบุชื่อสินค้า"
                   ></n-input>
                   <n-input
-                      style="border-radius: 25px; margin-bottom: 10px"
-                      clearable
-                      maxlength="10"
-                      placeholder="ระบุรหัสสินค้า"
+                    style="border-radius: 25px; margin-bottom: 10px"
+                    clearable
+                    maxlength="10"
+                    placeholder="ระบุรหัสสินค้า"
                   ></n-input>
                   <n-input
-                      style="border-radius: 25px; margin-bottom: 10px"
-                      clearable
-                      maxlength="10"
-                      placeholder="ระบุราคา"
-                  ><template #suffix>
-                    บาท
-                  </template></n-input>
+                    style="border-radius: 25px; margin-bottom: 10px"
+                    clearable
+                    maxlength="10"
+                    placeholder="ระบุราคา"
+                    ><template #suffix> บาท </template></n-input
+                  >
                   <n-input
-                      style="border-radius: 25px; margin-bottom: 10px"
-                      clearable
-                      placeholder="ระบุจำนวน"
-                  ><template #suffix>
-                    หน่วย
-                  </template></n-input>
+                    style="border-radius: 25px; margin-bottom: 10px"
+                    clearable
+                    placeholder="ระบุจำนวน"
+                    ><template #suffix> หน่วย </template></n-input
+                  >
                   <n-button
-                      round
-                      style="
-                  margin-left: 39%;
-                  margin-top: 25px;
-                  width: 110px;
-                  height: 35px;
-                "
-                      type="success"
-                      @click="handleConfirmEdit"
-                  >ยืนยันการเพิ่ม</n-button
+                    round
+                    style="
+                      margin-left: 39%;
+                      margin-top: 25px;
+                      width: 110px;
+                      height: 35px;
+                    "
+                    type="success"
+                    @click="handleConfirmEdit"
+                    >ยืนยันการเพิ่ม</n-button
                   >
                 </n-space>
               </template>
@@ -213,10 +213,10 @@
         </n-space>
 
         <n-data-table
-            ref="table"
-            :columns="products"
-            :data="dataProduct"
-            :pagination="pagination"
+          ref="table"
+          :columns="products"
+          :data="dataProduct"
+          :pagination="pagination"
         />
       </n-space>
     </n-tab-pane>
@@ -229,38 +229,36 @@
     <template #action>
       <n-space vertical style="margin-right: 20px; width: 100%">
         <n-input
-            style="border-radius: 25px; margin-bottom: 10px"
-            clearable
-            maxlength="50"
-            placeholder="ระบุชื่อสินค้า"
+          style="border-radius: 25px; margin-bottom: 10px"
+          clearable
+          maxlength="50"
+          placeholder="ระบุชื่อสินค้า"
         ></n-input>
         <n-input
-            style="border-radius: 25px; margin-bottom: 10px"
-            clearable
-            maxlength="10"
-            placeholder="ระบุรหัสสินค้า"
+          style="border-radius: 25px; margin-bottom: 10px"
+          clearable
+          maxlength="10"
+          placeholder="ระบุรหัสสินค้า"
         ></n-input>
         <n-input
-            style="border-radius: 25px; margin-bottom: 10px"
-            clearable
-            maxlength="10"
-            placeholder="ระบุราคา"
-        ><template #suffix>
-          บาท
-        </template></n-input>
+          style="border-radius: 25px; margin-bottom: 10px"
+          clearable
+          maxlength="10"
+          placeholder="ระบุราคา"
+          ><template #suffix> บาท </template></n-input
+        >
         <n-input
-            style="border-radius: 25px; margin-bottom: 10px"
-            clearable
-            placeholder="ระบุจำนวน"
-        ><template #suffix>
-          หน่วย
-        </template></n-input>
+          style="border-radius: 25px; margin-bottom: 10px"
+          clearable
+          placeholder="ระบุจำนวน"
+          ><template #suffix> หน่วย </template></n-input
+        >
         <n-space style="margin-top: 30px; margin-left: 35%">
           <n-button
-              round
-              type="info"
-              @click="handleConfirmEdit, (showEditModal = false)"
-          >ยืนยันการแก้ไข</n-button
+            round
+            type="info"
+            @click="handleConfirmEdit, (showEditModal = false)"
+            >ยืนยันการแก้ไข</n-button
           >
           <n-button round @click="showEditModal = false">ยกเลิก</n-button>
         </n-space>
@@ -274,16 +272,15 @@
     </template>
     <template #action>
       <n-button
-          round
-          type="error"
-          @click="handleConfirmDelete, (showDeleteModal = false)"
-      >ยืนยันการลบ</n-button>
+        round
+        type="error"
+        @click="handleConfirmDelete, (showDeleteModal = false)"
+        >ยืนยันการลบ</n-button
+      >
       <n-button round @click="showDeleteModal = false">ยกเลิก</n-button>
     </template>
   </n-modal>
 </template>
-
-
 
 <script lang="ts">
 import { Refresh, SearchOutline } from '@vicons/ionicons5'
@@ -297,14 +294,12 @@ export default defineComponent({
       return router
     },
   },
-
   setup() {
     const showEditModal = ref(false)
     const editedEmployee = ref(null)
 
     const showDeleteModal = ref(false)
     const DeleteEmployee = ref(null)
-
 
     const handleEditButton = (row: any) => {
       showEditModal.value = true
@@ -323,10 +318,6 @@ export default defineComponent({
     const handleConfirmDelete = () => {
       showModal.value = false
     }
-
-
-
-
 
     const columns = [
       {
@@ -370,33 +361,33 @@ export default defineComponent({
         render: (row: any) => {
           return h('div', [
             h(
-                NButton,
-                {
-                  secondary: true,
-                  round: true,
-                  type: 'info',
-                  size: 'small',
-                  onClick: () => {
-                    handleEditButton(row)
-                  },
-                  style: {
-                    marginRight: '5px',
-                  },
+              NButton,
+              {
+                secondary: true,
+                round: true,
+                type: 'info',
+                size: 'small',
+                onClick: () => {
+                  handleEditButton(row)
                 },
-                'แก้ไข'
+                style: {
+                  marginRight: '5px',
+                },
+              },
+              'แก้ไข'
             ),
             h(
-                NButton,
-                {
-                  secondary: true,
-                  round: true,
-                  type: 'error',
-                  size: 'small',
-                  onClick: () => {
-                    handleDeleteButton(row)
-                  },
+              NButton,
+              {
+                secondary: true,
+                round: true,
+                type: 'error',
+                size: 'small',
+                onClick: () => {
+                  handleDeleteButton(row)
                 },
-                'ลบ'
+              },
+              'ลบ'
             ),
           ])
         },
@@ -411,10 +402,6 @@ export default defineComponent({
       role: 'Role',
       email: 'billionaire@gmail.com',
     }))
-
-
-
-
 
     const products = [
       {
@@ -460,33 +447,33 @@ export default defineComponent({
         render: (row: any) => {
           return h('div', [
             h(
-                NButton,
-                {
-                  secondary: true,
-                  round: true,
-                  type: 'info',
-                  size: 'small',
-                  onClick: () => {
-                    handleEditButton(row)
-                  },
-                  style: {
-                    marginRight: '5px',
-                  },
+              NButton,
+              {
+                secondary: true,
+                round: true,
+                type: 'info',
+                size: 'small',
+                onClick: () => {
+                  handleEditButton(row)
                 },
-                'แก้ไข'
+                style: {
+                  marginRight: '5px',
+                },
+              },
+              'แก้ไข'
             ),
             h(
-                NButton,
-                {
-                  secondary: true,
-                  round: true,
-                  type: 'error',
-                  size: 'small',
-                  onClick: () => {
-                    handleDeleteButton(row)
-                  },
+              NButton,
+              {
+                secondary: true,
+                round: true,
+                type: 'error',
+                size: 'small',
+                onClick: () => {
+                  handleDeleteButton(row)
                 },
-                'ลบ'
+              },
+              'ลบ'
             ),
           ])
         },
@@ -501,10 +488,6 @@ export default defineComponent({
       price: 200,
       quantity: Math.floor(Math.random() * 100),
     }))
-
-
-
-
 
     const paginationReactive = reactive({
       page: 1,
@@ -527,7 +510,6 @@ export default defineComponent({
       location.reload() // Reloads the current page
     }
 
-
     return {
       pagination: paginationReactive,
       Refresh,
@@ -547,6 +529,16 @@ export default defineComponent({
       handleConfirmDelete,
       refreshPage,
     }
+  },
+})
+
+import { ProductRestControllerService } from '../../service/productService'
+
+await ProductRestControllerService.createProduct({
+  body: {
+    name: 'string',
+    category: 'test',
+    sellPrice: 30,
   },
 })
 </script>
@@ -583,3 +575,4 @@ export default defineComponent({
   justify-content: center;
 }
 </style>
+../../service/productService

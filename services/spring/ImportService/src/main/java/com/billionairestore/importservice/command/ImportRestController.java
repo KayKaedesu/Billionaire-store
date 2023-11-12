@@ -45,6 +45,7 @@ public class ImportRestController {
                 .name(buyProductRestModel.getName())
                 .category(buyProductRestModel.getCategory())
                 .buyPrice(buyProductRestModel.getBuyPrice())
+                .quantity(buyProductRestModel.getQuantity())
                 .build();
         String result;
         try{

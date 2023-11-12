@@ -72,77 +72,95 @@ function renderIcon(iconProps: IconifyIconProps) {
 
 const menuOptions: MenuMixedOption[] = [
   {
-    label: 'Hear the Wind Sing',
-    key: 'hear-the-wind-sing',
-    icon: renderIcon({ icon: 'material-symbols:book' }),
-  },
-  {
-    label: 'Pinball 1973',
-    key: 'pinball-1973',
-    icon: renderIcon({ icon: 'material-symbols:book' }),
-    disabled: true,
+    label: 'จัดการ',
+    key: 'manage',
+    icon: renderIcon({ icon: 'material-symbols:edit-square-outline-rounded' }),
     children: [
       {
-        label: 'Rat',
-        key: 'rat',
+        label: 'พนักงาน',
+        key: 'manage-employee',
+        icon: renderIcon({ icon: 'mdi:account-group' }),
+      },
+      {
+        label: 'รายชื่อสินค้า',
+        key: 'manage-product',
+        icon: renderIcon({ icon: 'material-symbols:shopping-cart-rounded' }),
       },
     ],
   },
-  {
-    label: 'A Wild Sheep Chase',
-    key: 'a-wild-sheep-chase',
-    disabled: true,
-    icon: renderIcon({ icon: 'material-symbols:book' }),
-  },
-  {
-    label: 'Dance Dance Dance',
-    key: 'Dance Dance Dance',
-    icon: renderIcon({ icon: 'material-symbols:book' }),
-    children: [
-      {
-        type: 'group',
-        label: 'People',
-        key: 'people',
-        children: [
-          {
-            label: 'Narrator',
-            key: 'narrator',
-            icon: renderIcon({ icon: 'material-symbols:person' }),
-          },
-          {
-            label: 'Sheep Man',
-            key: 'sheep-man',
-            icon: renderIcon({ icon: 'material-symbols:person' }),
-          },
-        ],
-      },
-      {
-        label: 'Beverage',
-        key: 'beverage',
-        icon: renderIcon({ icon: 'material-symbols:wine-bar' }),
-        children: [
-          {
-            label: 'Whisky',
-            key: 'whisky',
-          },
-        ],
-      },
-      {
-        label: 'Food',
-        key: 'food',
-        children: [
-          {
-            label: 'Sandwich',
-            key: 'sandwich',
-          },
-        ],
-      },
-      {
-        label: 'The past increases. The future recedes.',
-        key: 'the-past-increases-the-future-recedes',
-      },
-    ],
-  },
+
+  // {
+  //   label: 'Hear the Wind Sing',
+  //   key: 'hear-the-wind-sing',
+  //   icon: renderIcon({ icon: 'material-symbols:book' }),
+  // },
+  // {
+  //   label: 'Pinball 1973',
+  //   key: 'pinball-1973',
+  //   icon: renderIcon({ icon: 'material-symbols:book' }),
+  //   disabled: true,
+  //   children: [
+  //     {
+  //       label: 'Rat',
+  //       key: 'rat',
+  //     },
+  //   ],
+  // },
+  // {
+  //   label: 'A Wild Sheep Chase',
+  //   key: 'a-wild-sheep-chase',
+  //   disabled: true,
+  //   icon: renderIcon({ icon: 'material-symbols:book' }),
+  // },
+  // {
+  //   label: 'Dance Dance Dance',
+  //   key: 'Dance Dance Dance',
+  //   icon: renderIcon({ icon: 'material-symbols:book' }),
+  //   children: [
+  //     {
+  //       type: 'group',
+  //       label: 'People',
+  //       key: 'people',
+  //       children: [
+  //         {
+  //           label: 'Narrator',
+  //           key: 'narrator',
+  //           icon: renderIcon({ icon: 'material-symbols:person' }),
+  //         },
+  //         {
+  //           label: 'Sheep Man',
+  //           key: 'sheep-man',
+  //           icon: renderIcon({ icon: 'material-symbols:person' }),
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       label: 'Beverage',
+  //       key: 'beverage',
+  //       icon: renderIcon({ icon: 'material-symbols:wine-bar' }),
+  //       children: [
+  //         {
+  //           label: 'Whisky',
+  //           key: 'whisky',
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       label: 'Food',
+  //       key: 'food',
+  //       children: [
+  //         {
+  //           label: 'Sandwich',
+  //           key: 'sandwich',
+  //         },
+  //       ],
+  //     },
+  //     {
+  //       label: 'The past increases. The future recedes.',
+  //       key: 'the-past-increases-the-future-recedes',
+  //     },
+  //   ],
+  // },
 ]
 
 export default defineComponent({

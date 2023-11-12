@@ -37,9 +37,10 @@ public class BuyProductAggregate {
                 .buyPrice(command.getBuyPrice())
                 .quantity(command.getQuantity())
                 .build();
+        System.out.println("command buy");
+        System.out.println(command.getQuantity());
 //        BeanUtils.copyProperties(command, event);
         AggregateLifecycle.apply(event);
-        System.out.println("command buy");
     }
 
     @EventSourcingHandler
@@ -53,5 +54,6 @@ public class BuyProductAggregate {
         this.category = event.getCategory();
         this.buyPrice = event.getBuyPrice();
         this.quantity = event.getQuantity();
+        System.out.println(event.getQuantity());
     }
 }
