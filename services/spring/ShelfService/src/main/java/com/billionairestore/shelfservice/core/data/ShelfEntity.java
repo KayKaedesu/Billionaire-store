@@ -16,6 +16,6 @@ public class ShelfEntity implements Serializable {
     @Id
     @Column(unique = true)
     private String productId;
-    private int quantity;
+    private Double quantity;
 
 }

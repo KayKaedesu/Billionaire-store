@@ -10,14 +10,15 @@ import org.axonframework.spring.stereotype.Aggregate;
 import org.springframework.beans.BeanUtils;
 
 import java.lang.reflect.Array;
+import java.util.List;
 
 @Aggregate
 public class POSAggregate {
     @AggregateIdentifier
     private String aggregateId;
-    private String POSId;
+//    private String POSId;
     private String userId;
-    private Array productList;
+    private List<Object> productList;
 
 
     public POSAggregate(){}
@@ -25,21 +26,19 @@ public class POSAggregate {
     public POSAggregate(CreatePOSCommand createPOSCommand){
         POSCreatedEvent event =  POSCreatedEvent.builder()
                 .aggregateId(createPOSCommand.getAggregateId())
-                .POSId(createPOSCommand.getPOSId())
+//                .POSId(createPOSCommand.getPOSId())
                 .userId(createPOSCommand.getUserId())
                 .productList(createPOSCommand.getProductList())
                 .build();
         AggregateLifecycle.apply(event);
         System.out.println("command POS");
     }
-
     @EventSourcingHandler
     public void on(POSCreatedEvent posCreatedEvent) {
         System.out.println("ON AGGREGATE " + posCreatedEvent);
         this.aggregateId = posCreatedEvent.getAggregateId();
-        this.POSId = posCreatedEvent.getPOSId();
+//        this.POSId = posCreatedEvent.getPOSId();
         this.userId = posCreatedEvent.getUserId();
         this.productList = posCreatedEvent.getProductList();
     }
-
 }

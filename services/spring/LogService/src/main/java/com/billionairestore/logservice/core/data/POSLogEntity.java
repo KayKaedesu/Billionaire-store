@@ -8,6 +8,7 @@ import lombok.Data;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -21,8 +22,8 @@ public class POSLogEntity implements Serializable {
     private String logId;
     private String userId;
     private String productId;
-    private String name;
-    private int quantity;
-    private double price;
-    private Date createdAt;
+//    private String name;
+    private double quantity;
+    private double sellPrice;
+    private LocalDate createdAt;
 }

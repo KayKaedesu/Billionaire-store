@@ -4,12 +4,13 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.lang.reflect.Array;
+import java.util.List;
 
 @Data
 @Builder
 public class POSCreatedEvent {
     private String aggregateId;
-    private String POSId;
+//    private String POSId;
     private String userId;
-    private Array productList;
+    private List<Object> productList;
 }

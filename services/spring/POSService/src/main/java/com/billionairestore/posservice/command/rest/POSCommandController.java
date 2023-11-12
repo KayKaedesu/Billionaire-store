@@ -24,9 +24,10 @@ public class POSCommandController {
 
     @RequestMapping(value =  "/pos",method = RequestMethod.POST)
     public String addPOS(@RequestBody CreatePOSRestModel model){
+//        return model + "";
         CreatePOSCommand command = CreatePOSCommand.builder()
                 .aggregateId(UUID.randomUUID().toString())
-                .POSId(UUID.randomUUID().toString())
+//                .POSId(UUID.randomUUID().toString())
                 .userId(model.getUserId())
                 .productList(model.getProductList())
                 .build();

@@ -50,7 +50,7 @@ public class ProductRestController {
                 .category(createProductRestModel.getCategory())
                 .sellPrice(createProductRestModel.getSellPrice())
                 .productId(UUID.randomUUID().toString())
-                .aggregateId(UUID.randomUUID().toString())
+//                .aggregateId(UUID.randomUUID().toString())
                 .build();
         String result;
         try {
