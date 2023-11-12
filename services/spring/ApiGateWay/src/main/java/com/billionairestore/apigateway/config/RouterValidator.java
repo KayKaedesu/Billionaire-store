@@ -10,8 +10,8 @@ import java.util.function.Predicate;
 public class RouterValidator {
     public static final List<String> openApiEndpoints = List.of(
             "/auth/login",
-            "/h2-console/**"
-            ,"/**"
+            "/h2-console/**",
+            "/v3/api-docs/**"
     );
 
     public Predicate<ServerHttpRequest> isSecured = request -> openApiEndpoints
