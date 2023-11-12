@@ -1,4 +1,4 @@
-import getAxiosInstance from "@/service/axiosInstance";
+import getAxiosInstance from "./axiosInstance";
 
 const axios = getAxiosInstance('http://localhost:8080/product-service')
 
@@ -8,7 +8,9 @@ export async function createProduct(body: CreateProductRestModel) {
 }
 
 export async function deleteProduct(body: DeleteProductRestModel) {
-    return axios.delete('/products', body)
+    return axios.delete('/products', {
+        data: body
+    })
 }
 
 export async function putProduct(body: PutProductRestModel) {

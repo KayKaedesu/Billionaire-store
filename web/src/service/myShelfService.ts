@@ -1,4 +1,4 @@
-import getAxiosInstance from "@/service/axiosInstance";
+import getAxiosInstance from "./axiosInstance";
 
 const axios = getAxiosInstance('http://localhost:8080/shelf-service')
 
@@ -8,7 +8,9 @@ export async function createShelf(body: CreateShelfRestModel) {
 }
 
 export async function deleteShelf(body: DeleteShelfRestModel) {
-    return axios.delete('/shelf', body)
+    return axios.delete('/shelf', {
+        data: body
+    })
 }
 
 export async function putShelf(body: UpdateShelfRestModel) {

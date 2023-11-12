@@ -5,10 +5,12 @@ const val = ref()
 </script>
 
 <template>
-  <n-config-provider>
-    <n-global-style />
-    <router-view />
-  </n-config-provider>
+  <n-notification-provider>
+    <n-config-provider>
+      <n-global-style />
+      <router-view />
+    </n-config-provider>
+  </n-notification-provider>
 </template>
 
 <style scoped>

@@ -1,4 +1,4 @@
-import getAxiosInstance from "@/service/axiosInstance";
+import getAxiosInstance from "./axiosInstance";
 
 const axios = getAxiosInstance('http://localhost:8080/import-service')
 

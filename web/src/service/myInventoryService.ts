@@ -1,14 +1,16 @@
-import getAxiosInstance from "@/service/axiosInstance";
+import getAxiosInstance from "./axiosInstance";
 
 const axios = getAxiosInstance('http://localhost:8080/inventory-service')
 
 
-export async function createInventory(body: CreateImportRestModel) {
+export async function createInventory(body: CreateInventoryRestModel) {
     return axios.post('/inventory', body)
 }
 
 export async function deleteInventory(body: DeleteInventoryRestModel) {
-    return axios.delete('/inventory', body)
+    return axios.delete('/inventory', {
+        data: body
+    })
 }
 
 export async function getInventory() {
