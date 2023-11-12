@@ -17,7 +17,6 @@
         <template #header>
           <n-text strong depth="1">สวัสดี {NAME}</n-text>
         </template>
-
         <template #footer> a </template>
       </n-popover>
     </NLayoutHeader>
@@ -44,6 +43,7 @@
         }"
       >
         <router-view />
+        asdsad
       </NLayoutContent>
     </n-layout>
     <NLayoutFooter :inverted="inverted" bordered>
@@ -65,6 +65,8 @@ import {
 } from 'naive-ui'
 import { Icon, type IconifyIconProps } from '@iconify/vue'
 import type { MenuMixedOption } from 'naive-ui/es/menu/src/interface'
+import { RouterLink } from 'vue-router'
+
 
 function renderIcon(iconProps: IconifyIconProps) {
   return () => h(NIcon, null, { default: () => h(Icon, iconProps) })
@@ -77,90 +79,63 @@ const menuOptions: MenuMixedOption[] = [
     icon: renderIcon({ icon: 'material-symbols:edit-square-outline-rounded' }),
     children: [
       {
-        label: 'พนักงาน',
+        label: () =>
+            h(
+                RouterLink,
+                {
+                  to: {
+                    path: '/manager/home',
+                  }
+                },
+                { default: () => 'หน้าหลัก' }
+            ),
+        key: 'manage-home',
+        icon: renderIcon({ icon: 'material-symbols:home' }),
+      },
+      {
+        label: () =>
+            h(
+                RouterLink,
+                {
+                  to: {
+                    path: '/manager/employee',
+                  }
+                },
+                { default: () => 'พนักงาน' }
+            ),
         key: 'manage-employee',
         icon: renderIcon({ icon: 'mdi:account-group' }),
       },
       {
-        label: 'รายชื่อสินค้า',
+        label: () =>
+            h(
+                RouterLink,
+                {
+                  to: {
+                    path: '/manager/log',
+                  }
+                },
+                { default: () => 'รายการสินค้า' }
+            ),
         key: 'manage-product',
         icon: renderIcon({ icon: 'material-symbols:shopping-cart-rounded' }),
       },
+      {
+        label: () =>
+            h(
+                RouterLink,
+                {
+                  to: {
+                    path: '/manager/import',
+                  }
+                },
+                { default: () => 'เพิ่มรายการสินค้า' }
+            ),
+        key: 'buy-product',
+        icon: renderIcon({ icon: 'vaadin:stock' }),
+      },
     ],
   },
-
-  // {
-  //   label: 'Hear the Wind Sing',
-  //   key: 'hear-the-wind-sing',
-  //   icon: renderIcon({ icon: 'material-symbols:book' }),
-  // },
-  // {
-  //   label: 'Pinball 1973',
-  //   key: 'pinball-1973',
-  //   icon: renderIcon({ icon: 'material-symbols:book' }),
-  //   disabled: true,
-  //   children: [
-  //     {
-  //       label: 'Rat',
-  //       key: 'rat',
-  //     },
-  //   ],
-  // },
-  // {
-  //   label: 'A Wild Sheep Chase',
-  //   key: 'a-wild-sheep-chase',
-  //   disabled: true,
-  //   icon: renderIcon({ icon: 'material-symbols:book' }),
-  // },
-  // {
-  //   label: 'Dance Dance Dance',
-  //   key: 'Dance Dance Dance',
-  //   icon: renderIcon({ icon: 'material-symbols:book' }),
-  //   children: [
-  //     {
-  //       type: 'group',
-  //       label: 'People',
-  //       key: 'people',
-  //       children: [
-  //         {
-  //           label: 'Narrator',
-  //           key: 'narrator',
-  //           icon: renderIcon({ icon: 'material-symbols:person' }),
-  //         },
-  //         {
-  //           label: 'Sheep Man',
-  //           key: 'sheep-man',
-  //           icon: renderIcon({ icon: 'material-symbols:person' }),
-  //         },
-  //       ],
-  //     },
-  //     {
-  //       label: 'Beverage',
-  //       key: 'beverage',
-  //       icon: renderIcon({ icon: 'material-symbols:wine-bar' }),
-  //       children: [
-  //         {
-  //           label: 'Whisky',
-  //           key: 'whisky',
-  //         },
-  //       ],
-  //     },
-  //     {
-  //       label: 'Food',
-  //       key: 'food',
-  //       children: [
-  //         {
-  //           label: 'Sandwich',
-  //           key: 'sandwich',
-  //         },
-  //       ],
-  //     },
-  //     {
-  //       label: 'The past increases. The future recedes.',
-  //       key: 'the-past-increases-the-future-recedes',
-  //     },
-  //   ],
-  // },
 ]
 
 export default defineComponent({
