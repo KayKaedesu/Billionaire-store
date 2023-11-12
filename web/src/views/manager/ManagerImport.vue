@@ -59,8 +59,10 @@
           </template>
         </n-space>
       </NScrollbar>
-      <p>Total xxx THB</p>
+      <n-space style="display: flex; justify-content: center;">
+        <p>Total xxx THB</p>
       <n-button type="primary" @click="a"> Confirm Order </n-button>
+      </n-space>
     </n-layout-sider>
   </n-layout>
 </template>

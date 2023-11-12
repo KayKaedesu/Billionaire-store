@@ -1,5 +1,6 @@
 package com.billionairestore.inventoryservice.command;
 
+import com.billionairestore.core.events.BuyProductCreatedEvent;
 import com.billionairestore.core.events.CreatedEvent;
 import com.billionairestore.inventoryservice.core.data.InventoryEntity;
 import com.billionairestore.inventoryservice.core.data.InventoryRepository;
@@ -42,4 +43,13 @@ public class InventoryEventsHandler {
         BeanUtils.copyProperties(event, inventoryEntity);
         inventoryRepository.delete(inventoryEntity);
     }
+
+    @EventHandler
+    public void on(BuyProductCreatedEvent event){
+        System.out.println("buy");
+        InventoryEntity inventoryEntity = inventoryRepository.findByProductId(event.getProductId());
+        inventoryEntity.setQuantity(inventoryEntity.getQuantity() + event.getQuantity());
+        inventoryRepository.save(inventoryEntity);
+    }
+
 }

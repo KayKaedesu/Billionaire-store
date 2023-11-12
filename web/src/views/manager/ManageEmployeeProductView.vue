@@ -356,6 +356,8 @@ import { Refresh, SearchOutline } from '@vicons/ionicons5'
 import { h, defineComponent, reactive, ref } from 'vue'
 import { NButton, NModal } from 'naive-ui'
 import router from '@/router'
+import axios from 'axios'
+import {ProductQueryControllerService} from "@/service/productService";
 
 // import { ProductRestControllerService } from '../../../service/productService'
 //
@@ -372,8 +374,21 @@ export default defineComponent({
     router() {
       return router
     },
+    async fetchDataFromApi() {
+      try {
+        const response = await ProductQueryControllerService.getProduct()
+        const productsData = response;  // นี่คือข้อมูลที่คุณต้องการ
+        // ทำอะไรกับข้อมูลต่อไป
+        console.log(productsData);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
   },
 
+  async mounted() {
+    console.log(await this.fetchDataFromApi())
+  },
   setup() {
 
 

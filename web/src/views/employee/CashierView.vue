@@ -100,8 +100,6 @@ export default defineComponent({
     // data:[]
     // cart:[]
 
-
-
     const router = useRouter();
     const navigateToShelf = () => {
       router.push('/employee/shelf'); // Navigate to the specified route

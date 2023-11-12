@@ -162,20 +162,6 @@ export class ImportRestControllerService {
   }
 }
 
-export interface CreateImportRestModel {
-  /**  */
-  productId?: string;
-
-  /**  */
-  name?: string;
-
-  /**  */
-  category?: string;
-
-  /**  */
-  buyPrice?: number;
-}
-
 export interface BuyProductRestModel {
   /**  */
   productId?: string;
@@ -194,6 +180,20 @@ export interface BuyProductRestModel {
 
   /**  */
   quantity?: number;
+}
+
+export interface CreateImportRestModel {
+  /**  */
+  productId?: string;
+
+  /**  */
+  name?: string;
+
+  /**  */
+  category?: string;
+
+  /**  */
+  buyPrice?: number;
 }
 
 export interface ImportRestModel {

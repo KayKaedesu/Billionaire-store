@@ -25,6 +25,8 @@
 </template>
 
 <script lang="ts">
+import { login as loginFunc } from '../../service/myAuthService'
+import {useNotification} from 'naive-ui'
 export default {
   name: 'ManagerLoginView',
   data() {
@@ -34,8 +36,22 @@ export default {
     }
   },
   methods: {
-    login() {
-      this.$router.push({ name: 'ManagerHome' })
+    async login() {
+      try {
+        const response = await loginFunc({
+          username: this.username,
+          password: this.password
+        })
+        console.log(response)
+        localStorage.setItem('token', response.data.accessToken)
+        this.$router.push('/manager/home')
+      } catch {
+        const notif = useNotification()
+        notif.error({
+          content: 'Username หรือ Password ผิด',
+          keepAliveOnHover: true
+        })
+      }
       // Perform login logic here
     },
   },
