@@ -15,6 +15,7 @@
         <module name="InventoryService" />
         <module name="ApiGateWay" />
         <module name="POSService" />
+        <module name="ReportService" />
         <module name="ImportService" />
         <module name="ProductService" />
         <module name="AuthService" />

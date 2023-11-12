@@ -11,10 +11,8 @@ import org.springframework.context.annotation.Import;
 @SpringBootApplication
 @Import({AxonXstreamConfig.class})
 public class ProductServiceApplication {
-
 	public static void main(String[] args) {
 		RabbitRegisterConfig.registerToRabbit();
 		SpringApplication.run(ProductServiceApplication.class, args);
 	}
-
 }

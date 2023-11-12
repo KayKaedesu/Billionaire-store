@@ -8,6 +8,7 @@ import lombok.Data;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -22,7 +23,8 @@ public class ImportLogEntity implements Serializable {
     private String userId;
     private String productId;
     private String name;
+    private String category;
     private int quantity;
     private double buyPrice;
-    private Date createdAt;
+    private LocalDate createdAt;
 }

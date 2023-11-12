@@ -39,7 +39,9 @@ public class ImportRestController {
     public String buyProduct(@RequestBody BuyProductRestModel buyProductRestModel) {
         BuyProductCommand command = BuyProductCommand.builder()
                 .aggregateId(UUID.randomUUID().toString())
+                .logId(buyProductRestModel.getProductId() + buyProductRestModel.getUserId())
                 .productId(buyProductRestModel.getProductId())
+                .userId(buyProductRestModel.getUserId())
                 .name(buyProductRestModel.getName())
                 .category(buyProductRestModel.getCategory())
                 .buyPrice(buyProductRestModel.getBuyPrice())

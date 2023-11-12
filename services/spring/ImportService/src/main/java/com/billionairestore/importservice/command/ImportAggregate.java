@@ -1,5 +1,7 @@
 package com.billionairestore.importservice.command;
 
+import com.billionairestore.core.events.BuyProductCreatedEvent;
+import com.billionairestore.importservice.command.commands.BuyProductCommand;
 import com.billionairestore.importservice.command.commands.CreateImportCommand;
 import com.billionairestore.importservice.core.events.ImportCreatedEvent;
 import org.axonframework.commandhandling.CommandHandler;
@@ -27,6 +29,21 @@ public class ImportAggregate {
         AggregateLifecycle.apply(event);
     }
 
+//    @CommandHandler
+//    public ImportAggregate(BuyProductCommand command) {
+//        BuyProductCreatedEvent event = BuyProductCreatedEvent.builder()
+//                .aggregateId(command.getAggregateId())
+//                .productId(command.getProductId())
+//                .userId(command.getUserId())
+//                .name(command.getName())
+//                .category(command.getCategory())
+//                .buyPrice(command.getBuyPrice())
+//                .quantity(command.getQuantity())
+//                .build();
+////        BeanUtils.copyProperties(command, event);
+//        AggregateLifecycle.apply(event);
+//    }
+
     @EventSourcingHandler
     public void on(ImportCreatedEvent event) {
         System.out.println("aggregating import");
@@ -35,5 +52,4 @@ public class ImportAggregate {
         this.category = event.getCategory();
         this.buyPrice = event.getBuyPrice();
     }
-
 }
