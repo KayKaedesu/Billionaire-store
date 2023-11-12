@@ -1,5 +1,7 @@
 <template>
   <n-tabs type="segment">
+
+<!--    // ******************************************* ส่วนหนักงาน ***************************************************//-->
     <n-tab-pane name="employee" tab="รายชื่อพนักงาน">
   <n-space vertical>
     <n-space
@@ -110,13 +112,74 @@
         :pagination="pagination"
     />
   </n-space>
+
+      <n-modal v-model:show="showEditModal" preset="dialog" title="ยืนยันการแก้ไข">
+        <template #header>
+          <div>แก้ไขข้อมูลพนักงาน</div>
+        </template>
+        <template #action>
+          <n-space vertical style="margin-right: 20px; width: 100%">
+            <n-input
+                style="border-radius: 25px; margin-bottom: 10px"
+                clearable
+                maxlength="50"
+                placeholder="ระบุชื่อชื่อพนักงาน"
+            ></n-input>
+            <n-input
+                style="border-radius: 25px; margin-bottom: 10px"
+                clearable
+                maxlength="10"
+                placeholder="ระบุรหัสพนักงาน"
+            ></n-input>
+            <n-select
+                default-value="ระบุุตำแหน่ง"
+                :options="[
+                  {
+                    label: 'แคชเชียร์',
+                    value: '1',
+                  },
+                  {
+                    label: 'จัดการสินค้าหน้าร้าน',
+                    value: '2',
+                  },
+                ]"
+            />
+            <n-input
+                style="border-radius: 25px; margin-bottom: 10px"
+                clearable
+                placeholder="ระบุอีเมล"
+            ></n-input>
+            <n-space style="margin-top: 30px; margin-left: 25%">
+              <n-button
+                  round
+                  type="info"
+                  @click="handleConfirmProductEdit, (showEditModal = false)"
+              >ยืนยันการแก้ไข</n-button
+              >
+              <n-button round @click="showEditModal = false">ยกเลิก</n-button>
+            </n-space>
+          </n-space>
+        </template>
+      </n-modal>
+
+
+      <n-modal v-model:show="showDeleteModal"  preset="dialog" title="ยืนยันการลบ">
+        <template #header>
+          <div>ยืนยันการลบพนักงาน</div>
+        </template>
+        <template #action>
+          <n-button
+              round
+              type="error"
+              @click="handleConfirmDelete, showDeleteModal= false"
+          >ยืนยันการลบ</n-button>
+          <n-button round @click="showDeleteModal = false">ยกเลิก</n-button>
+        </template>
+      </n-modal>
+
     </n-tab-pane>
-
-
-
-
-
-
+<!--    // ******************************************* ส่วนหนักงาน ***************************************************//-->
+<!--    // ******************************************* ส่วนสินค้า *****************************************************//-->
     <n-tab-pane name="product" tab="รายชื่อสินค้า">
       <n-space vertical>
         <n-space
@@ -203,7 +266,7 @@
                   height: 35px;
                 "
                       type="success"
-                      @click="handleConfirmEdit"
+                      @click="handleConfirmProductEdit"
                   >ยืนยันการเพิ่ม</n-button
                   >
                 </n-space>
@@ -219,68 +282,71 @@
             :pagination="pagination"
         />
       </n-space>
+
+      <n-modal v-model:show="showEditProductModal" preset="dialog" title="ยืนยันการแก้ไข">
+        <template #header>
+          <div>แก้ไขข้อมูลสินค้า</div>
+        </template>
+        <template #action>
+          <n-space vertical style="margin-right: 20px; width: 100%">
+            <n-input
+                style="border-radius: 25px; margin-bottom: 10px"
+                clearable
+                maxlength="50"
+                placeholder="ระบุชื่อสินค้า"
+            ></n-input>
+            <n-input
+                style="border-radius: 25px; margin-bottom: 10px"
+                clearable
+                maxlength="10"
+                placeholder="ระบุรหัสสินค้า"
+            ></n-input>
+            <n-input
+                style="border-radius: 25px; margin-bottom: 10px"
+                clearable
+                maxlength="10"
+                placeholder="ระบุราคา"
+            ><template #suffix>
+              บาท
+            </template></n-input>
+            <n-input
+                style="border-radius: 25px; margin-bottom: 10px"
+                clearable
+                placeholder="ระบุจำนวน"
+            ><template #suffix>
+              หน่วย
+            </template></n-input>
+            <n-space style="margin-top: 30px; margin-left: 25%">
+              <n-button
+                  round
+                  type="info"
+                  @click="handleConfirmProductEdit, (showEditProductModal = false)"
+              >ยืนยันการแก้ไข</n-button
+              >
+              <n-button round @click="showEditProductModal = false">ยกเลิก</n-button>
+            </n-space>
+          </n-space>
+        </template>
+      </n-modal>
+
+
+      <n-modal v-model:show="showDeleteProductModal"  preset="dialog" title="ยืนยันการลบ">
+        <template #header>
+          <div>ยืนยันการลบสินค้า</div>
+        </template>
+        <template #action>
+          <n-button
+              round
+              type="error"
+              @click="handleConfirmDelete, showDeleteProductModal= false"
+          >ยืนยันการลบ</n-button>
+          <n-button round @click="showDeleteProductModal = false">ยกเลิก</n-button>
+        </template>
+      </n-modal>
     </n-tab-pane>
   </n-tabs>
 
-  <n-modal v-model:show="showEditModal" preset="dialog" title="ยืนยันการแก้ไข">
-    <template #header>
-      <div>แก้ไขข้อมูลสินค้า</div>
-    </template>
-    <template #action>
-      <n-space vertical style="margin-right: 20px; width: 100%">
-        <n-input
-            style="border-radius: 25px; margin-bottom: 10px"
-            clearable
-            maxlength="50"
-            placeholder="ระบุชื่อสินค้า"
-        ></n-input>
-        <n-input
-            style="border-radius: 25px; margin-bottom: 10px"
-            clearable
-            maxlength="10"
-            placeholder="ระบุรหัสสินค้า"
-        ></n-input>
-        <n-input
-            style="border-radius: 25px; margin-bottom: 10px"
-            clearable
-            maxlength="10"
-            placeholder="ระบุราคา"
-        ><template #suffix>
-          บาท
-        </template></n-input>
-        <n-input
-            style="border-radius: 25px; margin-bottom: 10px"
-            clearable
-            placeholder="ระบุจำนวน"
-        ><template #suffix>
-          หน่วย
-        </template></n-input>
-        <n-space style="margin-top: 30px; margin-left: 35%">
-          <n-button
-              round
-              type="info"
-              @click="handleConfirmEdit, (showEditModal = false)"
-          >ยืนยันการแก้ไข</n-button
-          >
-          <n-button round @click="showEditModal = false">ยกเลิก</n-button>
-        </n-space>
-      </n-space>
-    </template>
-  </n-modal>
-
-  <n-modal v-model:show="showDeleteModal" preset="dialog" title="ยืนยันการลบ">
-    <template #header>
-      <div>ยืนยันการลบสินค้า</div>
-    </template>
-    <template #action>
-      <n-button
-          round
-          type="error"
-          @click="handleConfirmDelete, (showDeleteModal = false)"
-      >ยืนยันการลบ</n-button>
-      <n-button round @click="showDeleteModal = false">ยกเลิก</n-button>
-    </template>
-  </n-modal>
+  <!--  // ******************************************* ส่วนสินค้า *****************************************************//-->
 </template>
 
 
@@ -291,6 +357,16 @@ import { h, defineComponent, reactive, ref } from 'vue'
 import { NButton, NModal } from 'naive-ui'
 import router from '@/router'
 
+// import { ProductRestControllerService } from '../../../service/productService'
+//
+// await ProductRestControllerService.createProduct({
+//   body: {
+//     name: 'string',
+//     category: 'test',
+//     sellPrice: 30,
+//   },
+// })
+
 export default defineComponent({
   methods: {
     router() {
@@ -299,33 +375,29 @@ export default defineComponent({
   },
 
   setup() {
+
+
+    // ******************************************* ส่วนหนักงาน ***************************************************//
     const showEditModal = ref(false)
     const editedEmployee = ref(null)
-
-    const showDeleteModal = ref(false)
-    const DeleteEmployee = ref(null)
-
-
     const handleEditButton = (row: any) => {
       showEditModal.value = true
       editedEmployee.value = row
     }
-
     const handleConfirmEdit = () => {
       showModal.value = false
     }
 
+
+    const showDeleteModal = ref(false)
+    const DeleteEmployee = ref(null)
     const handleDeleteButton = (row: any) => {
       showDeleteModal.value = true
       DeleteEmployee.value = row
     }
-
     const handleConfirmDelete = () => {
       showModal.value = false
     }
-
-
-
 
 
     const columns = [
@@ -412,9 +484,30 @@ export default defineComponent({
       email: 'billionaire@gmail.com',
     }))
 
+    // ******************************************* ส่วนหนักงาน ***************************************************//
+    // ******************************************* ส่วนสินค้า *****************************************************//
 
+    const showEditProductModal = ref(false)
+    const editedProduct = ref(null)
 
+    const handleEditProductButton = (row: any) => {
+      showEditProductModal.value = true
+      editedProduct.value = row
+    }
+    const handleConfirmProductEdit = () => {
+      showModal.value = false
+    }
 
+    const showDeleteProductModal = ref(false)
+    const DeleteProduct = ref(null)
+
+    const handleDeleteProductButton = (row: any) => {
+      showDeleteProductModal.value = true
+      DeleteProduct.value = row
+    }
+    const handleConfirmProductDelete = () => {
+      showModal.value = false
+    }
 
     const products = [
       {
@@ -467,7 +560,7 @@ export default defineComponent({
                   type: 'info',
                   size: 'small',
                   onClick: () => {
-                    handleEditButton(row)
+                    handleEditProductButton(row)
                   },
                   style: {
                     marginRight: '5px',
@@ -483,7 +576,7 @@ export default defineComponent({
                   type: 'error',
                   size: 'small',
                   onClick: () => {
-                    handleDeleteButton(row)
+                    handleDeleteProductButton(row)
                   },
                 },
                 'ลบ'
@@ -501,9 +594,7 @@ export default defineComponent({
       price: 200,
       quantity: Math.floor(Math.random() * 100),
     }))
-
-
-
+    // ******************************************* ส่วนสินค้า ***************************************************//
 
 
     const paginationReactive = reactive({
@@ -528,23 +619,34 @@ export default defineComponent({
     }
 
 
+
+
     return {
       pagination: paginationReactive,
       Refresh,
       SearchOutline,
-      data,
-      columns,
-      products,
-      dataProduct,
       showModal,
+
+      columns,
+      data,
       showEditModal,
-      EditEmployee,
       showDeleteModal,
       DeleteEmployee,
+
+      products,
+      dataProduct,
+      showEditProductModal,
+      showDeleteProductModal,
+      DeleteProduct,
+
       handleConfirmEdit,
       handleEditButton,
       handleDeleteButton,
       handleConfirmDelete,
+      handleConfirmProductEdit,
+      handleEditProductButton,
+      handleDeleteProductButton,
+      handleConfirmProductDelete,
       refreshPage,
     }
   },
