@@ -27,21 +27,6 @@ public class ProductRestController {
         this.commandGateway = commandGateway;
     }
 
-    @DeleteMapping
-    public String deleteProduct(@RequestBody DeleteProductRestModel deleteProductRestModel) {
-        DeleteProductCommand deleteProductCommand = DeleteProductCommand.builder()
-                .aggregateId(UUID.randomUUID().toString())
-                .productId(deleteProductRestModel.getProductId())
-                .build();
-        String result;
-        try {
-            commandGateway.sendAndWait(deleteProductCommand);
-            result = "deleted successfully";
-        } catch (Exception e) {
-            result = "error deleting product";
-        }
-        return result;
-    }
     @PostMapping
     public String createProduct(@RequestBody CreateProductRestModel createProductRestModel) {
         CreateProductCommand createProductCommand = CreateProductCommand.builder()
@@ -61,6 +46,23 @@ public class ProductRestController {
         }
         return result;
     }
+
+    @DeleteMapping
+    public String deleteProduct(@RequestBody DeleteProductRestModel deleteProductRestModel) {
+        DeleteProductCommand deleteProductCommand = DeleteProductCommand.builder()
+                .aggregateId(UUID.randomUUID().toString())
+                .productId(deleteProductRestModel.getProductId())
+                .build();
+        String result;
+        try {
+            commandGateway.sendAndWait(deleteProductCommand);
+            result = "deleted successfully";
+        } catch (Exception e) {
+            result = "error deleting product";
+        }
+        return result;
+    }
+
 
     @PutMapping
     public String putProduct(@RequestBody PutProductRestModel putProductRestModel) {

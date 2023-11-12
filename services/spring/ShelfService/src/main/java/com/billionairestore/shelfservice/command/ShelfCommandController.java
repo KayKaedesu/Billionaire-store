@@ -89,7 +89,7 @@ public class ShelfCommandController {
     }
 
     @RequestMapping(value = "/toInventory", method = RequestMethod.POST)
-    public String addShelf(@RequestBody ShelfToInventoryRestModel model) {
+    public String addInventory(@RequestBody ShelfToInventoryRestModel model) {
         ShelfToInventoryCommand command = ShelfToInventoryCommand.builder()
                 .aggregateId(UUID.randomUUID().toString())
                 .productId(model.getProductId())
