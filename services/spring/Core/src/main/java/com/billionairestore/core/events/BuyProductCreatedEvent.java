@@ -6,12 +6,12 @@ import lombok.Data;
 @Data
 @Builder
 public class BuyProductCreatedEvent {
-    private String aggregateId;
-    private String logId;
-    private String productId;
-    private String userId;
-    private String name;
-    private String category;
-    private Double buyPrice;
-    private int quantity;
+    private final String aggregateId;
+    private final String logId;
+    private final String productId;
+    private final String userId;
+    private final String name;
+    private final String category;
+    private final Double buyPrice;
+    private final int quantity;
 }

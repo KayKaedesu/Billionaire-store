@@ -1,8 +1,6 @@
 package com.billionairestore.posservice.command.rest;
 
 import com.billionairestore.posservice.command.create.CreatePOSCommand;
-import com.billionairestore.posservice.command.create.DeletePOSCommand;
-import com.billionairestore.posservice.command.create.UpdatePOSCommand;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -28,11 +26,9 @@ public class POSCommandController {
     public String addPOS(@RequestBody CreatePOSRestModel model){
         CreatePOSCommand command = CreatePOSCommand.builder()
                 .aggregateId(UUID.randomUUID().toString())
-                .POSId(model.getPOSId())
-                .employeeId(model.getEmployeeId())
-                .productId(model.getProductId())
-                .sellPrice(model.getSellPrice())
-                .quantity(model.getQuantity())
+                .POSId(UUID.randomUUID().toString())
+                .userId(model.getUserId())
+                .productList(model.getProductList())
                 .build();
         String result;
         try {
@@ -40,46 +36,6 @@ public class POSCommandController {
         }
         catch (Exception e){
              result = e.getLocalizedMessage();
-        }
-        return result;
-    }
-
-    @RequestMapping(value =  "/pos",method = RequestMethod.DELETE)
-    public String deletePOS(@RequestBody DeletePOSRestModel model){
-        DeletePOSCommand command = DeletePOSCommand.builder()
-                .aggregateId(UUID.randomUUID().toString())
-                .POSId(model.getPOSId())
-                .employeeId(model.getEmployeeId())
-                .productId(model.getProductId())
-                .sellPrice(model.getSellPrice())
-                .quantity(model.getQuantity())
-                .build();
-        String result;
-        try {
-            result = commandGateway.sendAndWait(command);
-        }
-        catch (Exception e){
-            result = e.getLocalizedMessage();
-        }
-        return result;
-    }
-
-    @RequestMapping(value =  "/pos",method = RequestMethod.PUT)
-    public String putPOS(@RequestBody UpdatePOSRestModel model){
-        UpdatePOSCommand command = UpdatePOSCommand.builder()
-                .aggregateId(UUID.randomUUID().toString())
-                .POSId(model.getPOSId())
-                .employeeId(model.getEmployeeId())
-                .productId(model.getProductId())
-                .sellPrice(model.getSellPrice())
-                .quantity(model.getQuantity())
-                .build();
-        String result;
-        try {
-            result = commandGateway.sendAndWait(command);
-        }
-        catch (Exception e){
-            result = e.getLocalizedMessage();
         }
         return result;
     }

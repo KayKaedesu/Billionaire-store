@@ -1,1 +1,1 @@
-import { ProductQueryRestControllerService } from '../service/index'
+import { ProductQueryRestControllerService } from './service/index'

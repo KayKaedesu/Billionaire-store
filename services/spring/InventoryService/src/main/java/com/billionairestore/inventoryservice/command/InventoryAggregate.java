@@ -4,7 +4,6 @@ import com.billionairestore.inventoryservice.command.commands.CreateInventoryCom
 import com.billionairestore.inventoryservice.command.commands.DeleteInventoryCommand;
 import com.billionairestore.inventoryservice.core.events.InventoryCreatedEvent;
 import com.billionairestore.inventoryservice.core.events.InventoryDeletedEvent;
-import com.billionairestore.productservice.command.commands.CreateProductCommand;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
@@ -12,7 +11,6 @@ import org.axonframework.modelling.command.AggregateLifecycle;
 import org.axonframework.spring.stereotype.Aggregate;
 import org.springframework.beans.BeanUtils;
 
-import java.util.UUID;
 
 @Aggregate
 public class InventoryAggregate {

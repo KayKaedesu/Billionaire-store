@@ -13,11 +13,17 @@ const { codegen } = require('swagger-axios-codegen')
 //   Authorization: 'Bearer ' + localStorage.getItem('token'),
 // }
 
+
 codegen({
-  fileName: 'productService',
-  remoteUrl: 'http://127.0.0.1:51894/v3/api-docs',
+  fileName: 'importService.ts',
+  remoteUrl: 'http://127.0.0.1:63705/v3/api-docs',
 })
-// codegen({
-//   fileName: 'posService',
-//   remoteUrl: 'http://localhost:51894/v3/api-docs',
-// })
+
+codegen({
+  fileName: 'inventoryService.ts',
+  remoteUrl: 'http://127.0.0.1:63804/v3/api-docs',
+})
+
+
+
+
