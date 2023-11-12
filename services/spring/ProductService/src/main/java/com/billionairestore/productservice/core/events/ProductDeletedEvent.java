@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import org.axonframework.modelling.command.TargetAggregateIdentifier;
 
 @Data
-@NoArgsConstructor
 public class ProductDeletedEvent {
     private String aggregateId;
     private String productId;

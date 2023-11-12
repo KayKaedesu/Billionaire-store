@@ -42,7 +42,7 @@ public class ShelfEventsHandler {
         System.out.println("created from product");
         ShelfEntity shelfEntity = new ShelfEntity();
         shelfEntity.setProductId(event.getProductId());
-        shelfEntity.setQuantity((double) 0);
+        shelfEntity.setQuantity(0);
         shelfRepository.save(shelfEntity);
     }
 
@@ -77,12 +77,14 @@ public class ShelfEventsHandler {
         ShelfEntity shelfEntity = shelfRepository.findByProductId(event.getProductId());
         System.out.println("to shelf");
         shelfEntity.setQuantity(shelfEntity.getQuantity() + event.getQuantity());
+        System.out.println(shelfEntity);
         shelfRepository.save(shelfEntity);
     }
 
     @EventHandler
     public void on(ShelfToInventoryEvent event) {
         ShelfEntity shelfEntity = shelfRepository.findByProductId(event.getProductId());
+        System.out.println(shelfEntity);
         if (shelfEntity == null || shelfEntity.getQuantity() < event.getQuantity()) {
             // กรณีของ shelf น้อยกว่าที่เพิ่มลงมา
             throw new IllegalArgumentException("Shelf quantity is less than the added quantity");
@@ -107,7 +109,7 @@ public class ShelfEventsHandler {
                 // กรณีของ shelf น้อยกว่าที่เพิ่มลงมา
                 throw new IllegalArgumentException("Shelf quantity is less than the added quantity");
             } else {
-                shelfEntity.setQuantity(shelfEntity.getQuantity() - productModel.getQuantity());
+                shelfEntity.setQuantity(shelfEntity.getQuantity() - productModel.getQuantity().intValue());
                 shelfRepository.save(shelfEntity);
             }
         }

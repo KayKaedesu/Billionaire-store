@@ -30,11 +30,12 @@ public class ProductEventsHandler {
 
     @EventHandler
     public void on(ProductDeletedEvent event){
+        System.out.println("deleted");
         ProductEntity entity = productRepository.findByProductId(event.getProductId());
         if (entity == null) {
             throw new IllegalStateException("Entity with id " + event.getProductId() + " not found");
         }
-        productRepository.deleteByProductId(event.getProductId());
+        productRepository.delete(entity);
     }
 
     @EventHandler
