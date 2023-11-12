@@ -1,5 +1,6 @@
 package com.billionairestore.reportservice.query.rest;
 
+import com.billionairestore.reportservice.query.FindImportReportQuery;
 import org.axonframework.messaging.responsetypes.ResponseTypes;
 import org.axonframework.queryhandling.QueryGateway;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,10 +16,10 @@ public class ReportQueryController {
         this.queryGateway = queryGateway;
     }
     @RequestMapping(value =  "/report",method = RequestMethod.GET)
-    public List<ReportRestModel> getReport(){
-        FindUserQuery findUserQuery = new FindUserQuery();
+    public List<ImportReportRestModel> getReport(){
+        FindImportReportQuery findImportReportQuery = new FindImportReportQuery();
         return queryGateway.query(
-                findUserQuery, ResponseTypes.multipleInstancesOf(UserRestModel.class)
+                findImportReportQuery, ResponseTypes.multipleInstancesOf(ImportReportRestModel.class)
         ).join();
     }
 }

@@ -1,7 +1,9 @@
 package com.billionairestore.reportservice.query;
 
-import com.billionairestore.reportservice.core.data.ImportLogRepository;
+import com.billionairestore.reportservice.core.data.ImportReportEntity;
+import com.billionairestore.reportservice.core.data.ImportReportRepository;
 import com.billionairestore.reportservice.core.data.POSLogRepository;
+import com.billionairestore.reportservice.query.rest.ImportReportRestModel;
 import org.axonframework.queryhandling.QueryHandler;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
@@ -11,21 +13,21 @@ import java.util.List;
 
 @Component
 public class ReportQueryHandler {
-    private final ImportLogRepository importLogRepository;
+    private final ImportReportRepository importReportRepository;
     private final POSLogRepository posLogRepository;
-    public ReportQueryHandler(ImportLogRepository importLogRepository, POSLogRepository posLogRepository){
-        this.importLogRepository = importLogRepository;
+    public ReportQueryHandler(ImportReportRepository importReportRepository, POSLogRepository posLogRepository){
+        this.importReportRepository = importReportRepository;
         this.posLogRepository = posLogRepository;
     }
     @QueryHandler
-    public List<UserRestModel> findUser(FindUserQuery query){
-        List<UserRestModel> usersRest = new ArrayList<>();
-        List<UserEntity> storedUsers = userRepository.findAll();
-        for (UserEntity userEntity: storedUsers){
-            UserRestModel userRestModel = new UserRestModel();
-            BeanUtils.copyProperties(userEntity, userRestModel);
-            usersRest.add(userRestModel);
+    public List<ImportReportRestModel> findImport(FindImportReportQuery query){
+        List<ImportReportRestModel> importRest = new ArrayList<>();
+        List<ImportReportEntity> storedImport = importReportRepository.findAll();
+        for (ImportReportEntity importReportEntity: storedImport){
+            ImportReportRestModel importReportRestModel = new ImportReportRestModel();
+            BeanUtils.copyProperties(importReportEntity, importReportRestModel);
+            importRest.add(importReportRestModel);
         }
-        return usersRest;
+        return importRest;
     }
 }

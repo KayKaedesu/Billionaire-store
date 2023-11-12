@@ -2,6 +2,7 @@ package com.billionairestore.reportservice.query.rest;
 
 import lombok.Data;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -10,7 +11,8 @@ public class ImportReportRestModel {
     private String userId;
     private String productId;
     private String name;
-    private int quantity;
+    private Double quantity;
+    private String category;
     private double buyPrice;
-    private Date createdAt;
+    private LocalDate createdAt;
 }

@@ -8,12 +8,13 @@ import lombok.Data;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
 @Table(name = "importlog")
 @Data
-public class ImportLogEntity implements Serializable {
+public class ImportReportEntity implements Serializable {
     @Serial
     private static final long serialVersionUID = -2932063800221375469L;
     @Id
@@ -22,7 +23,8 @@ public class ImportLogEntity implements Serializable {
     private String userId;
     private String productId;
     private String name;
-    private int quantity;
+    private double quantity;
+    private String category;
     private double buyPrice;
-    private Date createdAt;
+    private LocalDate createdAt;
 }

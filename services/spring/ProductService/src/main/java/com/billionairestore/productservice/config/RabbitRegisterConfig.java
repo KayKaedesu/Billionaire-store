@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class RabbitRegisterConfig {
-    private static String exchangeName = "product-service";
-    private static ArrayList<RabbitQueue> queues = new ArrayList<>(
+    public static String exchangeName = "product-service";
+    public static ArrayList<RabbitQueue> queues = new ArrayList<>(
             Arrays.asList(
                     new RabbitQueue("create-product", "create-product"),
                     new RabbitQueue("delete-product", "delete-product")
