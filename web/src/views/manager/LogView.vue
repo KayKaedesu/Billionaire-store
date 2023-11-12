@@ -1,26 +1,35 @@
 <template>
-  <n-tabs type="segment">
-    <n-tab-pane name="employee" tab="ประวัติการซื้อ">
-  <n-space vertical>
-    <n-space class="top-content">
-      <n-text class="text"> ประวัติการซื้อขาย </n-text>
-      </n-space>
 
+  <n-space class="top-content">
+  <n-text class="text"> ประวัติการซื้อ-ขาย </n-text>
+</n-space>
+  <n-tabs type="segment">
+    <n-tab-pane name="buy" tab="ประวัติการซื้อ">
+  <n-space vertical>
     <n-data-table
         ref="table"
-        :columns="columns"
-        :data="data"
+        :columns="Buycolumns"
+        :data="Buydata"
         :pagination="pagination"
     />
   </n-space>
+    </n-tab-pane>
+    <n-tab-pane name="sell" tab="ประวัติการขาย">
+      <n-space vertical>
+        <n-data-table
+            ref="table"
+            :columns="Sellcolumns"
+            :data="Selldata"
+            :pagination="pagination"
+        />
+      </n-space>
     </n-tab-pane>
   </n-tabs>
 </template>
 
 <script lang="ts">
-import { Refresh, SearchOutline } from '@vicons/ionicons5'
+import { Refresh } from '@vicons/ionicons5'
 import { defineComponent, reactive, ref } from 'vue'
-import { NButton } from 'naive-ui'
 import router from '@/router'
 
 export default defineComponent({
@@ -31,48 +40,110 @@ export default defineComponent({
   },
 
   setup() {
-    const columns = [
+    const Buycolumns = [
       {
-        title: 'ลำดับ',
-        key: 'order',
-        width: '150px',
-        align: 'center',
-        sorter: (row1: any, row2: any) => row1.order - row2.order,
-      },
-      {
-        title: 'ชื่อพนักงาน',
+        title: 'ชื่อผู้ซื้อ',
         key: 'name',
         width: '250px',
         align: 'center',
       },
       {
-        title: 'รหัสพนักงาน',
-        key: 'id',
+        title: 'สินค้า',
+        key: 'product',
         width: '150',
         align: 'center',
-        sorter: (row1: any, row2: any) => row1.id - row2.id,
       },
       {
-        title: 'ตำแหน่ง',
-        key: 'role',
+        title: 'รหัสสินค้า',
+        key: 'productid',
+        width: '150',
+        align: 'center',
+        sorter: (row1: any, row2: any) => row1.productid - row2.productid,
+      },
+      {
+        title: 'ราคา',
+        key: 'price',
         width: '200px',
         align: 'center',
+        sorter: (row1: any, row2: any) => row1.price - row2.price,
       },
       {
-        title: 'อีเมล',
-        key: 'email',
+        title: 'จำนวน',
+        key: 'quantity',
         width: '250px',
         align: 'center',
+        sorter: (row1: any, row2: any) => row1.quantity - row2.quantity,
+      },
+      {
+        title: 'วันและเวลา',
+        key: 'date',
+        width: '250px',
+        align: 'center',
+        sorter: (row1: any, row2: any) => row1.date - row2.date,
       },
     ]
 
-    const data = Array.from({ length: 46 }).map((_, index) => ({
+    const Buydata = Array.from({ length: 46 }).map((_, index) => ({
       key: index,
-      order: `${index + 1}`,
       name: `นาย A นามสกุล B`,
-      id: Math.floor(Math.random() * 100),
-      role: 'Role',
-      email: 'billionaire@gmail.com',
+      product: 'ไก่',
+      productid: '0001',
+      price: Math.floor(Math.random() * 1000),
+      quantity: Math.floor(Math.random() * 100),
+      date: '30 มกราคม 2564 เวลา 12:00',
+    }))
+
+    const Sellcolumns = [
+      {
+        title: 'ชื่อผู้ขาย',
+        key: 'name',
+        width: '250px',
+        align: 'center',
+      },
+      {
+        title: 'สินค้า',
+        key: 'product',
+        width: '150',
+        align: 'center',
+      },
+      {
+        title: 'รหัสสินค้า',
+        key: 'productid',
+        width: '150',
+        align: 'center',
+        sorter: (row1: any, row2: any) => row1.productid - row2.productid,
+      },
+      {
+        title: 'ราคา',
+        key: 'price',
+        width: '200px',
+        align: 'center',
+        sorter: (row1: any, row2: any) => row1.price - row2.price,
+      },
+      {
+        title: 'จำนวน',
+        key: 'quantity',
+        width: '250px',
+        align: 'center',
+        sorter: (row1: any, row2: any) => row1.quantity - row2.quantity,
+      },
+      {
+        title: 'วันและเวลา',
+        key: 'date',
+        width: '250px',
+        align: 'center',
+        sorter: (row1: any, row2: any) => row1.date - row2.date,
+      },
+    ]
+
+    const Selldata = Array.from({ length: 46 }).map((_, index) => ({
+      key: index,
+      name: `นาย A นามสกุล B`,
+      product: 'กระทะ',
+      productid: '0002',
+      price: Math.floor(Math.random() * 1000),
+      quantity: Math.floor(Math.random() * 100),
+      date: '30 มกราคม 2564 เวลา 12:00',
     }))
 
 
@@ -91,15 +162,16 @@ export default defineComponent({
     })
 
     const refreshPage = () => {
-      location.reload() // Reloads the current page
+      location.reload()
     }
 
     return {
       pagination: paginationReactive,
       Refresh,
-      SearchOutline,
-      data,
-      columns,
+      Buydata,
+      Buycolumns,
+      Selldata,
+      Sellcolumns,
       refreshPage,
     }
   },
@@ -108,7 +180,7 @@ export default defineComponent({
 
 <style>
 .top-content {
-  margin-left: 45%;
+  margin-left: 43%;
   width: 950px;
   display: flex;
   align-items: center;
@@ -118,7 +190,5 @@ export default defineComponent({
   font-size: 30px;
   display: flex;
   align-items: center;
-  justify-content: center;
 }
-
 </style>
