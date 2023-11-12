@@ -20,6 +20,11 @@ const managerModule: RouteModule = {
       name: 'managerLog',
       component: () => import('@/views/manager/LogView.vue'),
     },
+    {
+      path: 'import',
+      name: 'managerLog',
+      component: () => import('@/views/manager/ManagerImport.vue'),
+    },
     // {
     //   path: 'inventory',
     //   name: 'ManagerInventory',
