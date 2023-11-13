@@ -67,17 +67,14 @@ public class ShelfEventsHandler {
     public void on(InventoryToShelfEvent event) {
         InventoryEntity inventoryEntity = inventoryRepository.findByProductId(event.getProductId());
         if (inventoryEntity == null || inventoryEntity.getQuantity() < event.getQuantity()) {
-            // กรณีของ inventory น้อยกว่าที่เพิ่มลงมา
             throw new IllegalArgumentException("Inventory quantity is less than the added quantity");
         } else {
             inventoryEntity.setQuantity(inventoryEntity.getQuantity() - event.getQuantity());
-            System.out.println(inventoryEntity);
             inventoryRepository.save(inventoryEntity);
         }
         ShelfEntity shelfEntity = shelfRepository.findByProductId(event.getProductId());
         System.out.println("to shelf");
         shelfEntity.setQuantity(shelfEntity.getQuantity() + event.getQuantity());
-        System.out.println(shelfEntity);
         shelfRepository.save(shelfEntity);
     }
 

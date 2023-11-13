@@ -29,20 +29,6 @@ public class ImportAggregate {
         AggregateLifecycle.apply(event);
     }
 
-//    @CommandHandler
-//    public ImportAggregate(BuyProductCommand command) {
-//        BuyProductCreatedEvent event = BuyProductCreatedEvent.builder()
-//                .aggregateId(command.getAggregateId())
-//                .productId(command.getProductId())
-//                .userId(command.getUserId())
-//                .name(command.getName())
-//                .category(command.getCategory())
-//                .buyPrice(command.getBuyPrice())
-//                .quantity(command.getQuantity())
-//                .build();
-////        BeanUtils.copyProperties(command, event);
-//        AggregateLifecycle.apply(event);
-//    }
 
     @EventSourcingHandler
     public void on(ImportCreatedEvent event) {

@@ -24,7 +24,7 @@ public class ShelfAggregate {
     @CommandHandler
     public ShelfAggregate(CreateShelfCommand createShelfCommand){
         if (createShelfCommand.getProductId().isBlank()){
-            throw new IllegalArgumentException("กรอกให้ครบ");
+            throw new IllegalArgumentException("ProductId is blank");
         }
         ShelfCreatedEvent shelfCreatedEvent = new ShelfCreatedEvent();
         BeanUtils.copyProperties(createShelfCommand, shelfCreatedEvent);
@@ -44,7 +44,7 @@ public class ShelfAggregate {
     @CommandHandler
     public ShelfAggregate(UpdateShelfCommand updateShelfCommand){
         if (updateShelfCommand.getProductId().isBlank()){
-            throw new IllegalArgumentException("กรอกให้ครบด้วย");
+            throw new IllegalArgumentException("ProductId is blank");
         }
         ShelfUpdatedEvent shelfUpdatedEvent = new ShelfUpdatedEvent();
         BeanUtils.copyProperties(updateShelfCommand, shelfUpdatedEvent);

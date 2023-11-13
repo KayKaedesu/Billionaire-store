@@ -35,7 +35,6 @@ public class InventoryEventsHandler {
         inventoryEntity.setQuantity(0);
         inventoryRepository.save(inventoryEntity);
     }
-
     @EventHandler
     public void on(InventoryDeletedEvent event){
         System.out.println("deleted");
@@ -43,7 +42,6 @@ public class InventoryEventsHandler {
         BeanUtils.copyProperties(event, inventoryEntity);
         inventoryRepository.delete(inventoryEntity);
     }
-
     @EventHandler
     public void on(BuyProductCreatedEvent event){
         System.out.println("buy");
